@@ -9,38 +9,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Store.Domain;
-using Store.Domain.Data;
-using Store.Services;
+using StoreWPF.View;
 using StoreWPF.ViewModel;
 
-namespace StoreWPF
+namespace StoreWPF.View
 {
     /// <summary>
-    /// Interaction logic for ShoppingCartWindow.xaml
+    /// Interaction logic for OrderWindow.xaml
     /// </summary>
-    public partial class ShoppingCartWindow : Window
+    public partial class OrderWindow : Window
     {
         private readonly MainWindow _mainWindow;
-        public ShoppingCartWindow( MainWindow mainWindow)
+        public OrderWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            this.DataContext = new ShoppingCartVM(ApplicationService.Instance.EventAggregator);
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.ShowMe();
-            this.Hide();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            OrderWindow orderWindow= new OrderWindow(_mainWindow);
-            orderWindow.Show();
+            _mainWindow.shoppingCartWindow=new ShoppingCartWindow(_mainWindow);
             this.Close();
+
         }
     }
 }

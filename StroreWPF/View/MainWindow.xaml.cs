@@ -20,7 +20,7 @@ using Store.Domain.Data;
 using Store.Services;
 using StoreWPF.ViewModel;
 
-namespace StoreWPF
+namespace StoreWPF.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

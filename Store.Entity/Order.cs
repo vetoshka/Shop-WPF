@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Store.Domain
 {
    public class Order
     {
         public Guid OrderId { get; set; }
-        public Guid? ShoppingCartId { get; set; }
+        public Guid ShoppingCartId { get; set; }
+
+        public virtual ShoppingCart  ShoppingCart { get; set; }
         public Guid ShippingMethodId { get; set; }
         public Guid ShippingAddressId { get; set; }
         public Guid PaymentMethodId { get; set; }

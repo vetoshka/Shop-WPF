@@ -14,9 +14,10 @@ using System.Windows.Shapes;
 using Store.Domain;
 using Store.Domain.Data;
 using Store.Services;
+using StoreWPF.View;
 using StoreWPF.ViewModel;
 
-namespace StoreWPF
+namespace StoreWPF.View
 {
     /// <summary>
     /// Interaction logic for AdminPanel.xaml

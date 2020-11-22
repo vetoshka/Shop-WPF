@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Store.Domain;
 
 namespace Store.Domain.Data
 {
@@ -22,7 +21,9 @@ namespace Store.Domain.Data
  
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=StoreDatadb;Trusted_Connection=True;");
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=StoreDatadb;Trusted_Connection=True;");
         }
     }
 }
