@@ -18,7 +18,7 @@ namespace Store.Domain.Data
         {
             Database.EnsureCreated();
         }
- 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder

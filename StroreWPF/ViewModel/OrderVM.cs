@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using Prism.Commands;
-using Prism.Events;
+﻿using Prism.Commands;
 using Prism.Mvvm;
 using Store.Domain;
 using Store.Domain.Data;
 using Store.Services;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace StoreWPF.ViewModel
 {
-  public class OrderVM : BindableBase
+    public class OrderVM : BindableBase
     {
         private readonly OrderService orderService = new OrderService(new Repository<Order>(new DBContext()));
         private readonly AddressService addressService = new AddressService(new Repository<Address>(new DBContext()));
         private readonly ShippingMethodService shippingMethodService = new ShippingMethodService(new Repository<ShippingMethod>(new DBContext()));
-        private readonly PaymentMethodService paymentMethodService = new PaymentMethodService( new Repository<PaymentMethod>(new DBContext()));
-     // private readonly ShoppingCartItemService shoppingCartItemService = new ShoppingCartItemService(new Repository<ShoppingCartItem>(new DBContext()));
+        private readonly PaymentMethodService paymentMethodService = new PaymentMethodService(new Repository<PaymentMethod>(new DBContext()));
         public ShippingMethod SelectedShippingMethod { get; set; }
         public PaymentMethod SelectedPaymentMethod { get; set; }
 

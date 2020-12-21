@@ -23,25 +23,25 @@ namespace StoreWPF.View
     public partial class ShoppingCartWindow : Window
     {
         private readonly MainWindow _mainWindow;
-        public ShoppingCartWindow( MainWindow mainWindow)
+        public ShoppingCartWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            this.DataContext = new ShoppingCartVM(ApplicationService.Instance.EventAggregator);
+            DataContext = new ShoppingCartVM(ApplicationService.Instance.EventAggregator);
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.ShowMe();
-            this.Hide();
+            Hide();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow= new OrderWindow(_mainWindow);
+            var orderWindow = new OrderWindow(_mainWindow);
             orderWindow.Show();
-            this.Close();
+            Close();
         }
     }
 }

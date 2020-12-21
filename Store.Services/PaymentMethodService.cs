@@ -6,11 +6,11 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
-   public class PaymentMethodService
+    public class PaymentMethodService
     {
         private readonly IRepository<PaymentMethod> _paymentMethodRepository;
 
-        public PaymentMethodService (IRepository<PaymentMethod> paymentMethodRepository)
+        public PaymentMethodService(IRepository<PaymentMethod> paymentMethodRepository)
         {
             _paymentMethodRepository = paymentMethodRepository;
         }

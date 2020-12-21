@@ -6,11 +6,11 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
-  public  class ShippingMethodService
+    public class ShippingMethodService
     {
         private readonly IRepository<ShippingMethod> _shippingMethodRepository;
 
-        public ShippingMethodService(IRepository<ShippingMethod> shippingMethodRepository )
+        public ShippingMethodService(IRepository<ShippingMethod> shippingMethodRepository)
         {
             _shippingMethodRepository = shippingMethodRepository;
         }

@@ -7,7 +7,7 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
-   public class AddressService
+    public class AddressService
     {
         private readonly IRepository<Address> _addressRepository;
 
@@ -22,16 +22,12 @@ namespace Store.Services
 
         public void InsertAddress(Address address)
         {
-            if (address == null)
-                throw new ArgumentNullException(nameof(Address));
             _addressRepository.Insert(address);
 
         }
 
         public void DeleteAddress(Address address)
         {
-            if (address == null)
-                throw new ArgumentNullException(nameof(Address));
             _addressRepository.Delete(address);
 
         }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Store.Domain.Data
 {
-   public class Repository<T>:IRepository<T> where T: class
+    public class Repository<T> : IRepository<T> where T : class
     {
         readonly DBContext _context;
         readonly DbSet<T> _dbSet;

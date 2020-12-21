@@ -7,7 +7,7 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
-   public class VendorService
+    public class VendorService
     {
         private readonly IRepository<Vendor> _vendorRepository;
 

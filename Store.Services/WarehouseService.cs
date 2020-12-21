@@ -30,7 +30,7 @@ namespace Store.Services
 
         public void DeleteWarehouse(Warehouse warehouse)
         {
-            if ( warehouse == null)
+            if (warehouse == null)
                 throw new ArgumentNullException(nameof(Warehouse));
             _warehouseRepository.Delete(warehouse);
 
@@ -43,7 +43,7 @@ namespace Store.Services
 
         public Warehouse GetWarehouseById(Guid id)
         {
-           
+
             return _warehouseRepository.GetById(id);
         }
     }

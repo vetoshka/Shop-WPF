@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Store.Domain;
+using Store.Domain.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Store.Domain;
-using Store.Domain.Data;
 
 namespace Store.Services
 {
-    public class ProductService 
+    public class ProductService
     {
         private readonly IRepository<Product> _productRepository;
 
@@ -24,7 +24,7 @@ namespace Store.Services
             if (product == null)
                 throw new ArgumentNullException(nameof(Product));
             _productRepository.Insert(product);
-            
+
         }
 
         public void DeleteProduct(Product product)
@@ -32,13 +32,13 @@ namespace Store.Services
             if (product == null)
                 throw new ArgumentNullException(nameof(Product));
             _productRepository.Delete(product);
-            
+
         }
 
         public Product GetProductById(Guid id)
         {
             return _productRepository.GetById(id);
         }
-        
+
     }
 }

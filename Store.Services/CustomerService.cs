@@ -7,7 +7,7 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
-   public class CustomerService
+    public class CustomerService
     {
         private readonly IRepository<Customer> _customerRepository;
 
@@ -20,10 +20,8 @@ namespace Store.Services
             return _customerRepository.GetAll().ToList();
         }
 
-        public void InsertCustomer (Customer customer)
+        public void InsertCustomer(Customer customer)
         {
-            if (customer == null)
-                throw new ArgumentNullException(nameof(Customer));
             _customerRepository.Insert(customer);
 
         }

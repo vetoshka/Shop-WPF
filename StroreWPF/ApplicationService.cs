@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Prism.Events;
+﻿using Prism.Events;
 
 namespace StoreWPF
 {
@@ -9,20 +6,11 @@ namespace StoreWPF
     {
         private ApplicationService() { }
 
-        private static readonly ApplicationService _instance = new ApplicationService();
-
-        internal static ApplicationService Instance { get { return _instance; } }
+        internal static ApplicationService Instance { get; } = new ApplicationService();
 
         private IEventAggregator _eventAggregator;
-        internal IEventAggregator EventAggregator
-        {
-            get
-            {
-                if (_eventAggregator == null)
-                    _eventAggregator = new EventAggregator();
-
-                return _eventAggregator;
-            }
+        internal IEventAggregator EventAggregator {
+            get { return _eventAggregator ??= new EventAggregator(); }
         }
     }
 }

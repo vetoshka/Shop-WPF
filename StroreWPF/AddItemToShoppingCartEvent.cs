@@ -6,7 +6,7 @@ using Store.Domain;
 
 namespace StoreWPF
 {
-   public class AddItemToShoppingCartEvent : PubSubEvent<Product>
+    public class AddItemToShoppingCartEvent : PubSubEvent<Product>
     {
 
     }

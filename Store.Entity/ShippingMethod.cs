@@ -2,7 +2,7 @@
 
 namespace Store.Domain
 {
-  public  class ShippingMethod
+    public class ShippingMethod
     {
         public Guid ShippingMethodId { get; set; }
         public string Name { get; set; }

@@ -10,6 +10,6 @@ namespace Store.Domain
         public bool FreeShipping { get; set; }
         public bool IsAdministrator { get; set; }
         public Guid? AddressId { get; set; }
-         public virtual Address Address { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

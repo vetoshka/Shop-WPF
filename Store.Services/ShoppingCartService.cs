@@ -7,7 +7,7 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
- public class ShoppingCartService
+    public class ShoppingCartService
     {
         private readonly IRepository<ShoppingCart> _shoppingCartRepository;
 

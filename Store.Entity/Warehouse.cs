@@ -2,7 +2,7 @@
 
 namespace Store.Domain
 {
-   public class Warehouse
+    public class Warehouse
     {
         public Guid WarehouseId { get; set; }
         public string Name { get; set; }

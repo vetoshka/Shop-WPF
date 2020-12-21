@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using Prism.Events;
+﻿using Prism.Events;
 using Store.Domain;
+using System.Collections.ObjectModel;
 
 namespace StoreWPF
 {
-   public class MakeOrderEvent : PubSubEvent<ObservableCollection<Product>>
+    public class MakeOrderEvent : PubSubEvent<ObservableCollection<Product>>
     {
     }
 }

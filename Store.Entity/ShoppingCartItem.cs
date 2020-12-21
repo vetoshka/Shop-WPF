@@ -2,7 +2,7 @@
 
 namespace Store.Domain
 {
-   public class ShoppingCartItem
+    public class ShoppingCartItem
     {
         public Guid ShoppingCartItemId { get; set; }
         public Guid ShoppingCartId { get; set; }

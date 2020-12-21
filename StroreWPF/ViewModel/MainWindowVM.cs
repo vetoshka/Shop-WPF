@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Store.Domain;
 using Store.Domain.Data;
 using Store.Services;
+using System;
+using System.Collections.ObjectModel;
 
 namespace StoreWPF.ViewModel
 {
-   public class MainWindowVM : BindableBase
+    public class MainWindowVM : BindableBase
 
-   {
-       protected readonly IEventAggregator _eventAggregator;
+    {
+        protected readonly IEventAggregator _eventAggregator;
         private readonly ProductService productService = new ProductService(new Repository<Product>(new DBContext()));
         private readonly ShoppingCartService shoppingCartService = new ShoppingCartService(new Repository<ShoppingCart>(new DBContext()));
         private readonly ShoppingCartItemService shoppingCartItemService = new ShoppingCartItemService(new Repository<ShoppingCartItem>(new DBContext()));
@@ -25,10 +23,10 @@ namespace StoreWPF.ViewModel
             _eventAggregator = eventAggregator;
             Products = new ObservableCollection<Product>(productService.GetAllProducts());
             _eventAggregator.GetEvent<InsertProductEvent>()
-                .Subscribe((product) => { Products.Add(product);});
-             shoppingCart=CreateShoppingCart();
-            
-      
+                .Subscribe((product) => { Products.Add(product); });
+            shoppingCart = CreateShoppingCart();
+
+
 
             AddProductToShoppingCart = new DelegateCommand<Product>(CreateShoppingCartItem);
         }

@@ -8,7 +8,7 @@ using Store.Domain.Data;
 
 namespace Store.Services
 {
-  public  class ShoppingCartItemService
+    public class ShoppingCartItemService
     {
         private readonly IRepository<ShoppingCartItem> _shoppingCartItemRepository;
 
@@ -23,8 +23,8 @@ namespace Store.Services
 
         public IEnumerable<ShoppingCartItem> GetShoppingCartItemsByShoppingCartId(Guid id)
         {
-           return _shoppingCartItemRepository.GetAll().Where(item => item.ShoppingCartId == id);
-             
+            return _shoppingCartItemRepository.GetAll().Where(item => item.ShoppingCartId == id);
+
         }
         public void InsertShoppingCartItem(ShoppingCartItem shoppingCartItem)
         {
@@ -42,7 +42,7 @@ namespace Store.Services
 
         }
 
-        public  ShoppingCartItem GetShoppingCartItemById(Guid id)
+        public ShoppingCartItem GetShoppingCartItemById(Guid id)
         {
 
             return _shoppingCartItemRepository.GetById(id);
@@ -50,7 +50,7 @@ namespace Store.Services
 
         public double GetShoppingCartItemsCost(Guid shoppingCartId)
         {
-            var productService= new ProductService(new Repository<Product>(new DBContext()));
+            var productService = new ProductService(new Repository<Product>(new DBContext()));
             var items = GetShoppingCartItemsByShoppingCartId(shoppingCartId);
             return items.Sum(item => productService.GetProductById(item.ProductId).Cost);
         }

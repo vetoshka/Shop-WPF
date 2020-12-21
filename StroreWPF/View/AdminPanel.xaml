@@ -40,7 +40,7 @@
                 <TabItem.Content>
                     <Canvas Name="AddProductCanvas" Width="546">
                         <Label Content="Name:"  Canvas.Top="16"/>
-                        <TextBox Name="Name" Text="{Binding Name , UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213" 
+                        <TextBox Name="Name" Text="{Binding Path=Name , UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213" 
                                  Opacity="1" Canvas.Left="-1" Canvas.Top="41" Height="17"/>
                         <Label Content="Short description:"  Canvas.Left="-1" Canvas.Top="58"/>
                         <TextBox Name="ShortDescription"  Text="{Binding ShortDescription ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213"  Opacity="1" Canvas.Left="-1" Canvas.Top="83" Height="17"/>

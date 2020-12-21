@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Store.Domain
 {
-   public class ShoppingCart
+    public class ShoppingCart
     {
         public Guid ShoppingCartId { get; set; }
         public Guid? CustomerId { get; set; }

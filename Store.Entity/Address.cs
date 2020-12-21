@@ -2,7 +2,7 @@
 
 namespace Store.Domain
 {
-   public class Address
+    public class Address
     {
         public Guid AddressId { get; set; }
         public string FirstName { get; set; }
