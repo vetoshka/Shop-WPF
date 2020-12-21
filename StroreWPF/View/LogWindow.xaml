@@ -1,0 +1,45 @@
+﻿<Window x:Class="StoreWPF.View.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreWPF.View"
+        mc:Ignorable="d"
+        Title="LogWindow" Height="450" Width="579" Background="#FFBCBFFF">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="#FFD9DBFF"></Setter>
+            <Setter Property="Width" Value="273"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+        </Style>
+    </Window.Resources>
+    <Canvas Margin="0,0,10,0">
+        <Label Content="Entrance to the personal account" Canvas.Left="135" Canvas.Top="20"  />
+        <TextBox Canvas.Left="148" Canvas.Top="113" Text="{Binding Email }" TextWrapping="Wrap"/>
+        <Label Content="E-mail" Canvas.Left="250" Canvas.Top="73"/>
+        <Label Content="Password" Canvas.Left="236" Canvas.Top="164"/>
+        <TextBox Canvas.Left="148" Canvas.Top="204" Text="{Binding Password}" TextWrapping="Wrap"/>
+        <Button Content="Log in" Canvas.Left="148" Canvas.Top="267" Width="273" Height="30" Background="#FFD9DBFF"/>
+        <Button Content="Register" Canvas.Left="355" Canvas.Top="313" Background="#FFBCBFFF" BorderBrush="#FFBCBFFF" FontSize="16" Width="66" FontStyle="Normal">
+            <Button.Template>
+                <ControlTemplate>
+                    <TextBlock TextDecorations="Underline" Text="Register"></TextBlock>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+    </Canvas>
+</Window>
