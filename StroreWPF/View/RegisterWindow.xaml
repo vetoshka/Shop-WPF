@@ -1,0 +1,49 @@
+﻿<Window x:Class="StoreWPF.View.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreWPF.View"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="402" Width="705" Background="#FFBCBFFF">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="#FFD9DBFF"></Setter>
+            <Setter Property="Width" Value="197"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Background" Value="#FFBCBFFF"></Setter>
+        </Style>
+    </Window.Resources>
+    <Canvas>
+        <Label Content="New user registration" Canvas.Left="251"/>
+        <Label Content="Name" Canvas.Left="36" Canvas.Top="54"/>
+        <TextBox Canvas.Left="36" Canvas.Top="94" Text="{Binding Name}" TextWrapping="Wrap" />
+        <Label Content="Phone" Canvas.Left="258" Canvas.Top="54"/>
+        <TextBox Canvas.Left="258" Canvas.Top="94" Text="{Binding Phone}" TextWrapping="Wrap" />
+        <Label Content="Password" Canvas.Left="484" Canvas.Top="54"/>
+        <TextBox Canvas.Left="484" Canvas.Top="94" Text="{Binding Password}" TextWrapping="Wrap" />
+        <Label Content="Surname" Canvas.Left="36" Canvas.Top="151"/>
+        <TextBox Canvas.Left="36" Canvas.Top="202" Text="{Binding Surname}" TextWrapping="Wrap"/>
+        <Label Content="E-mail" Canvas.Left="258" Canvas.Top="151"/>
+        <TextBox Canvas.Left="258" Canvas.Top="202" Text="{Binding Email}" TextWrapping="Wrap" />
+        <Label Content="Repeat password" Canvas.Left="484" Canvas.Top="151"/>
+        <TextBox Canvas.Left="484" Canvas.Top="202" Text="" TextWrapping="Wrap" />
+        <Label Content="Date of birth" Canvas.Left="36"  Canvas.Top="255"/>
+        <DatePicker Canvas.Left="36" Canvas.Top="295" SelectedDate="{Binding SelectedDate}" Foreground="#FF32008B" Background="#FFBCBFFF" Width="197"/>
+        <Button Content="Register" Canvas.Left="268" Canvas.Top="272" Width="413" Height="47"/>
+
+    </Canvas>
+</Window>
