@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Store.Domain.Services;
 
 namespace Store.Domain.Data
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IDataService<T> where T : class
     {
         readonly DBContext _context;
         readonly DbSet<T> _dbSet;

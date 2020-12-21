@@ -1,8 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Store.Domain;
 
-namespace Store.Domain.Data
+namespace Store.EntityFramework
 {
-    public class DBContext : DbContext
+   public class StoreDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
@@ -14,10 +18,6 @@ namespace Store.Domain.Data
         public DbSet<ShippingMethod> ShippingMethods { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
-        public DBContext()
-        {
-            Database.EnsureCreated();
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

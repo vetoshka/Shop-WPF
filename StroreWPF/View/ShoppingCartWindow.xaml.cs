@@ -23,7 +23,7 @@ namespace StoreWPF.View
     public partial class ShoppingCartWindow : Window
     {
         private readonly MainWindow _mainWindow;
-        public ShoppingCartWindow(MainWindow mainWindow)
+        public ShoppingCartWindow( MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
@@ -39,7 +39,7 @@ namespace StoreWPF.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var orderWindow = new OrderWindow(_mainWindow);
+            var orderWindow= new OrderWindow(_mainWindow);
             orderWindow.Show();
             Close();
         }
