@@ -16,6 +16,7 @@ namespace Store.EntityFramework
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<ShippingMethod> ShippingMethods { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
