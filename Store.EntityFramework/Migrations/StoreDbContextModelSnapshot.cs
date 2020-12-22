@@ -21,7 +21,7 @@ namespace Store.EntityFramework.Migrations
 
             modelBuilder.Entity("Store.Domain.Address", b =>
                 {
-                    b.Property<Guid>("AddressId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -46,14 +46,14 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Street")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("Id");
 
                     b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Store.Domain.Customer", b =>
                 {
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -72,7 +72,7 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
@@ -104,7 +104,7 @@ namespace Store.EntityFramework.Migrations
 
             modelBuilder.Entity("Store.Domain.Order", b =>
                 {
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -135,7 +135,7 @@ namespace Store.EntityFramework.Migrations
                     b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ShoppingCartId");
 
@@ -144,7 +144,7 @@ namespace Store.EntityFramework.Migrations
 
             modelBuilder.Entity("Store.Domain.PaymentMethod", b =>
                 {
-                    b.Property<Guid>("PaymentMethodId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -154,14 +154,14 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PaymentMethodId");
+                    b.HasKey("Id");
 
                     b.ToTable("PaymentMethods");
                 });
 
             modelBuilder.Entity("Store.Domain.Product", b =>
                 {
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -201,14 +201,14 @@ namespace Store.EntityFramework.Migrations
                     b.Property<double>("Width")
                         .HasColumnType("float");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Store.Domain.ShippingMethod", b =>
                 {
-                    b.Property<Guid>("ShippingMethodId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -218,28 +218,28 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ShippingMethodId");
+                    b.HasKey("Id");
 
                     b.ToTable("ShippingMethods");
                 });
 
             modelBuilder.Entity("Store.Domain.ShoppingCart", b =>
                 {
-                    b.Property<Guid>("ShoppingCartId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ShoppingCartId");
+                    b.HasKey("Id");
 
                     b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("Store.Domain.ShoppingCartItem", b =>
                 {
-                    b.Property<Guid>("ShoppingCartItemId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -249,7 +249,7 @@ namespace Store.EntityFramework.Migrations
                     b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ShoppingCartItemId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ShoppingCartId");
 
@@ -258,7 +258,7 @@ namespace Store.EntityFramework.Migrations
 
             modelBuilder.Entity("Store.Domain.Vendor", b =>
                 {
-                    b.Property<Guid>("VendorId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -274,14 +274,14 @@ namespace Store.EntityFramework.Migrations
                     b.Property<Guid?>("WarehouseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("VendorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Vendors");
                 });
 
             modelBuilder.Entity("Store.Domain.Warehouse", b =>
                 {
-                    b.Property<Guid>("WarehouseId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -294,7 +294,7 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WarehouseId");
+                    b.HasKey("Id");
 
                     b.ToTable("Warehouses");
                 });

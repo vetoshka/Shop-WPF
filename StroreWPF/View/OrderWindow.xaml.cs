@@ -17,7 +17,7 @@ namespace StoreWPF.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.ShowMe();
-            _mainWindow.shoppingCartWindow = new ShoppingCartWindow(_mainWindow);
+           // _mainWindow.shoppingCartWindow = new ShoppingCartWindow(_mainWindow);
             Close();
 
         }

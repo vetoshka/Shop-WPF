@@ -1,20 +1,19 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Store.Domain;
-using Store.Domain.Data;
-using Store.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Store.Domain.Services;
 
 namespace StoreWPF.ViewModel
 {
     public class OrderVM : BindableBase
     {
-        private readonly OrderService orderService = new OrderService(new Repository<Order>(new DBContext()));
-        private readonly AddressService addressService = new AddressService(new Repository<Address>(new DBContext()));
-        private readonly ShippingMethodService shippingMethodService = new ShippingMethodService(new Repository<ShippingMethod>(new DBContext()));
-        private readonly PaymentMethodService paymentMethodService = new PaymentMethodService(new Repository<PaymentMethod>(new DBContext()));
+        private readonly IDataService<Order> _orderService;
+        private readonly IDataService<Address> _addressService;
+        private readonly IDataService<ShippingMethod> _shippingMethodService;
+        private readonly IDataService<PaymentMethod> _paymentMethodService ;
         public ShippingMethod SelectedShippingMethod { get; set; }
         public PaymentMethod SelectedPaymentMethod { get; set; }
 
@@ -32,10 +31,16 @@ namespace StoreWPF.ViewModel
 
         public double Sum { get; set; }
 
-        public OrderVM()
+        public OrderVM( IDataService<Order> orderService, IDataService<Address> addressService, IDataService<ShippingMethod> shippingMethodService,
+            IDataService<PaymentMethod> paymentMethodService)
         {
-            ShippingMethods = new ObservableCollection<ShippingMethod>(shippingMethodService.GetAllShippingMethods());
-            PaymentMethods = new ObservableCollection<PaymentMethod>(paymentMethodService.GetAllPaymentMethodsMethods());
+            _paymentMethodService = paymentMethodService;
+            _shippingMethodService = shippingMethodService;
+            _addressService = addressService;
+            _paymentMethodService = paymentMethodService;
+            _orderService = orderService;
+            ShippingMethods = new ObservableCollection<ShippingMethod>(_shippingMethodService.GetAll());
+            PaymentMethods = new ObservableCollection<PaymentMethod>(_paymentMethodService.GetAll());
             AddOrder = new DelegateCommand(CreateOrder);
 
         }
@@ -51,19 +56,19 @@ namespace StoreWPF.ViewModel
                 LastName = LastName,
                 PhoneNumber = PhoneNumber,
                 Street = Street,
-                AddressId = Guid.NewGuid()
+                Id = Guid.NewGuid()
             };
-            addressService.InsertAddress(address);
+            _addressService.Insert(address);
             var order = new Order()
             {
                 CustomerId = Guid.NewGuid(),
-                OrderNumber = orderService.GetAllOrders().Count() + 1,
-                PaymentMethodId = SelectedPaymentMethod.PaymentMethodId,
-                ShippingMethodId = SelectedShippingMethod.ShippingMethodId,
+                OrderNumber = _orderService.GetAll().Count() + 1,
+                PaymentMethodId = SelectedPaymentMethod.Id,
+                ShippingMethodId = SelectedShippingMethod.Id,
                 PaymentStatus = Sum.ToString(),
-                ShippingAddressId = address.AddressId
+                ShippingAddressId = address.Id
             };
-            orderService.InsertOrder(order);
+            _orderService.Insert(order);
         }
         public DelegateCommand AddOrder { get; }
         public ObservableCollection<ShippingMethod> ShippingMethods { get; set; }

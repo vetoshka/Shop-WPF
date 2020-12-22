@@ -40,7 +40,7 @@
                 <TabItem.Content>
                     <Canvas Name="AddProductCanvas" Width="546">
                         <Label Content="Name:"  Canvas.Top="16"/>
-                        <TextBox Name="Name" Text="{Binding Path=Name , UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213" 
+                        <TextBox  Text="{Binding Path=Name , UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213" 
                                  Opacity="1" Canvas.Left="-1" Canvas.Top="41" Height="17"/>
                         <Label Content="Short description:"  Canvas.Left="-1" Canvas.Top="58"/>
                         <TextBox Name="ShortDescription"  Text="{Binding ShortDescription ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213"  Opacity="1" Canvas.Left="-1" Canvas.Top="83" Height="17"/>
@@ -54,13 +54,13 @@
                         <Label Content="Image source:"  Canvas.Top="262"/>
                         <TextBox Name="ImageSource" Text="{Binding ImageSource ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213" Opacity="1" Canvas.Top="287" Height="17"/>
                         <Label Content="Weight:"  Canvas.Top="304"/>
-                        <TextBox Name="Weight"  PreviewTextInput="NumberValidationTextBox" Text="{Binding Weight ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329"/>
+                        <TextBox  PreviewTextInput="NumberValidationTextBox" Text="{Binding Weight ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329"/>
                         <Label  Content="Length:"   Canvas.Top="304" Canvas.Left="105"/>
                         <TextBox Name="Length" PreviewTextInput="NumberValidationTextBox" Text="{Binding Length ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329" Canvas.Left="102"/>
                         <Label Content="Width:"   Canvas.Top="304" Canvas.Left="204"/>
-                        <TextBox Name="Width" PreviewTextInput="NumberValidationTextBox" Text="{Binding Width ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329" Canvas.Left="201"/>
+                        <TextBox  PreviewTextInput="NumberValidationTextBox" Text="{Binding Width ,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329" Canvas.Left="201"/>
                         <Label Content="Height:" Canvas.Top="304" Canvas.Left="307"/>
-                        <TextBox Name="Height" Text="{Binding Height ,UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="NumberValidationTextBox" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329" Canvas.Left="307"/>
+                        <TextBox  Text="{Binding Height ,UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="NumberValidationTextBox" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="329" Canvas.Left="307"/>
                         <CheckBox Name="FreeShipping" IsChecked="{Binding FreeShipping ,UpdateSourceTrigger=PropertyChanged}" Content="Free shipping" Canvas.Left="423" Canvas.Top="327"/>
                         <Button Name="AddItem" Content="Add" Canvas.Left="278" Canvas.Top="368" Width="79" Command="{Binding AddProduct}"/>
                         <ListBox Height="124" Width="182" Canvas.Left="321" Canvas.Top="150" ItemsSource="{Binding Path=Vendors }" IsSelected="True" SelectedItem="{Binding SelectedVendor }">

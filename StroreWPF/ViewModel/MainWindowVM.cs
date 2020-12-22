@@ -2,28 +2,31 @@
 using Prism.Events;
 using Prism.Mvvm;
 using Store.Domain;
-using Store.Domain.Data;
-using Store.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Store.Domain.Services;
 
 namespace StoreWPF.ViewModel
 {
     public class MainWindowVM : BindableBase
-
     {
-        protected readonly IEventAggregator _eventAggregator;
-        private readonly ProductService productService = new ProductService(new Repository<Product>(new DBContext()));
-        private readonly ShoppingCartService shoppingCartService = new ShoppingCartService(new Repository<ShoppingCart>(new DBContext()));
-        private readonly ShoppingCartItemService shoppingCartItemService = new ShoppingCartItemService(new Repository<ShoppingCartItem>(new DBContext()));
+
+        private readonly IDataService<Product> _productService;
+        private readonly IDataService<ShoppingCart> _shoppingCartService;
+        private readonly IDataService<ShoppingCartItem> _shoppingCartItemService;
 
         private ShoppingCart shoppingCart;
-        public MainWindowVM(IEventAggregator eventAggregator)
+
+        public  MainWindowVM(IDataService<Product> productService, IDataService<ShoppingCart> shoppingCartService,
+            IDataService<ShoppingCartItem> shoppingCartItemService)
         {
-            _eventAggregator = eventAggregator;
-            Products = new ObservableCollection<Product>(productService.GetAllProducts());
-            _eventAggregator.GetEvent<InsertProductEvent>()
-                .Subscribe((product) => { Products.Add(product); });
+            _shoppingCartService = shoppingCartService;
+            _productService = productService;
+            _shoppingCartItemService = shoppingCartItemService;
+            Products = new ObservableCollection<Product>(_productService.GetAll());
             shoppingCart = CreateShoppingCart();
 
 
@@ -35,9 +38,9 @@ namespace StoreWPF.ViewModel
         {
             shoppingCart = new ShoppingCart()
             {
-                ShoppingCartId = Guid.NewGuid()
+                Id = Guid.NewGuid()
             };
-            shoppingCartService.InsertShoppingCart(shoppingCart);
+            _shoppingCartService.Insert(shoppingCart);
             return shoppingCart;
 
         }
@@ -46,11 +49,10 @@ namespace StoreWPF.ViewModel
         {
             var shoppingCartItem = new ShoppingCartItem()
             {
-                ProductId = product.ProductId,
-                ShoppingCartId = shoppingCart.ShoppingCartId
+                ProductId = product.Id,
+                ShoppingCartId = shoppingCart.Id
             };
-            shoppingCartItemService.InsertShoppingCartItem(shoppingCartItem);
-            _eventAggregator.GetEvent<AddItemToShoppingCartEvent>().Publish(product);
+            _shoppingCartItemService.Insert(shoppingCartItem);
         }
         public ObservableCollection<Product> Products { get; set; }
         public DelegateCommand<Product> AddProductToShoppingCart { get; }

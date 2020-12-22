@@ -10,34 +10,24 @@ namespace StoreWPF.View
     public partial class MainWindow : Window
     {
         public ShoppingCartWindow shoppingCartWindow;
-        public MainWindow()
-        {
+        public AdminPanelVM AdminPanelVm { get; set; }
+        public MainWindow(){
 
 
             InitializeComponent();
-            DataContext = new MainWindowVM(ApplicationService.Instance.EventAggregator);
-            shoppingCartWindow = new ShoppingCartWindow(this);
 
-        }
-        public void ShowMe()
-        {
-            (FindResource("showMe") as Storyboard).Begin(this);
-        }
-        public void HideMe()
-        {
-            (FindResource("hideMe") as Storyboard).Begin(this);
         }
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            var adminPanel = new AdminPanel(this);
-            HideMe();
+            var adminPanel = new AdminPanel(this ,AdminPanelVm);
+            Hide();
             adminPanel.Show();
 
         }
 
         private void ShoppingCartButton_Click(object sender, RoutedEventArgs e)
         {
-            HideMe();
+            Hide();
             shoppingCartWindow.Show();
 
         }

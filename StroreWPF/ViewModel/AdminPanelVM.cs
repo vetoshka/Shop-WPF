@@ -1,16 +1,15 @@
-﻿using Prism.Commands;
+﻿using System.Collections.Generic;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using Store.Domain;
-using Store.Domain.Data;
-using Store.Services;
 using System.Collections.ObjectModel;
+using Store.Domain.Services;
 
 namespace StoreWPF.ViewModel
 {
     public class AdminPanelVM : BindableBase
     {
-        protected readonly IEventAggregator _eventAggregator;
         public string NameW { get; set; }
         public string CountryW { get; set; }
         public string CityW { get; set; }
@@ -36,37 +35,40 @@ namespace StoreWPF.ViewModel
 
 
 
-        private readonly WarehouseService warehouseService = new WarehouseService(new Repository<Warehouse>(new DBContext()));
-        private readonly VendorService vendorService = new VendorService(new Repository<Vendor>(new DBContext()));
-        private readonly ProductService productService = new ProductService(new Repository<Product>(new DBContext()));
-        private readonly OrderService orderService = new OrderService(new Repository<Order>(new DBContext()));
+        private readonly IDataService<Warehouse> _warehouseService;
+        private readonly IDataService<Vendor> _vendorService;
+        private readonly IDataService<Product> _productService;
+        private readonly IDataService<Order> _orderService ;
 
 
 
-        public AdminPanelVM(IEventAggregator eventAggregator)
+        public AdminPanelVM( IDataService<Warehouse> warehouseService, IDataService<Vendor> vendorService,
+            IDataService<Product> productService, IDataService<Order> orderService)
         {
-            _eventAggregator = eventAggregator;
-            Warehouses = new ObservableCollection<Warehouse>(warehouseService.GetAllWarehouses());
-            Vendors = new ObservableCollection<Vendor>(vendorService.GetAllVendors());
-            Orders = new ObservableCollection<Order>(orderService.GetAllOrders());
+            _productService = productService;
+            _warehouseService = warehouseService;
+            _orderService = orderService;
+            _vendorService = vendorService;
+            Warehouses = new ObservableCollection<Warehouse>(_warehouseService.GetAll());
+            Vendors = new ObservableCollection<Vendor>(_vendorService.GetAll());
+            Orders = new ObservableCollection<Order>(_orderService.GetAll());
             AddWarehouse = new DelegateCommand<object>(obj => CreateWarehouse());
             AddVendor = new DelegateCommand<object>(obj => CreateVendor());
             AddProduct = new DelegateCommand<object>(obj => CreateProduct());
             DeleteWarehouse = new DelegateCommand<Warehouse>(warehouse =>
               {
-                  warehouseService.DeleteWarehouse(warehouse);
+                  _warehouseService.Delete(warehouse.Id);
                   Warehouses.Remove(warehouse);
               });
 
             DeleteVendor = new DelegateCommand<Vendor>(vendor =>
             {
-                vendorService.DeleteVendor(vendor);
+                _vendorService.Delete(vendor.Id);
                 Vendors.Remove(vendor);
             });
 
 
         }
-
         private void CreateWarehouse()
         {
             var warehouse = new Warehouse()
@@ -75,7 +77,7 @@ namespace StoreWPF.ViewModel
                 Country = CountryW,
                 Name = NameW
             };
-            warehouseService.InsertWarehouse(warehouse);
+            _warehouseService.Insert(warehouse);
             Warehouses.Add(warehouse);
         }
         private void CreateVendor()
@@ -85,9 +87,9 @@ namespace StoreWPF.ViewModel
                 Country = CountryV,
                 Email = EmailV,
                 Name = NameV,
-                WarehouseId = SelectedWarehouse.WarehouseId
+                WarehouseId = SelectedWarehouse.Id
             };
-            vendorService.InsertVendor(vendor);
+            _vendorService.Insert(vendor);
             Vendors.Add(vendor);
         }
         private void CreateProduct()
@@ -98,7 +100,7 @@ namespace StoreWPF.ViewModel
                 ShortDescription = ShortDescription,
                 Cost = Cost,
                 Count = Count,
-                VendorId = SelectedVendor.VendorId,
+                VendorId = SelectedVendor.Id,
                 FreeShipping = FreeShipping,
                 FullDescription = FullDescription,
                 Height = Height,
@@ -107,8 +109,7 @@ namespace StoreWPF.ViewModel
                 Width = Width,
                 Weight = Weight
             };
-            productService.InsertProduct(product);
-            _eventAggregator.GetEvent<InsertProductEvent>().Publish(product);
+            _productService.Insert(product);
         }
 
         public ObservableCollection<Vendor> Vendors { get; set; }

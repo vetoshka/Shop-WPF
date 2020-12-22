@@ -10,8 +10,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Store.Domain;
-using Store.Domain.Data;
-using Store.Services;
 using StoreWPF.View;
 using StoreWPF.ViewModel;
 
@@ -23,11 +21,11 @@ namespace StoreWPF.View
     public partial class ShoppingCartWindow : Window
     {
         private readonly MainWindow _mainWindow;
-        public ShoppingCartWindow( MainWindow mainWindow)
+        public ShoppingCartWindow( MainWindow mainWindow , ShoppingCartVM shoppingCartVM)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            DataContext = new ShoppingCartVM(ApplicationService.Instance.EventAggregator);
+            DataContext = shoppingCartVM;
         }
 
 

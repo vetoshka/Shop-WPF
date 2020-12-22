@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Store.Domain.Models;
 using Store.Domain.Services;
 using Store.EntityFramework;
 
-namespace Store.Domain.Data
+namespace Store.EntityFramework
 {
     public class GenericDataService<T> : IDataService<T> where T : DomainObject
     {
         private readonly StoreDbContextFactory _storeDbContextFactory;
+
+        public GenericDataService( StoreDbContextFactory storeDbContextFactory)
+        {
+            _storeDbContextFactory = storeDbContextFactory;
+        }
         public async Task<bool> Delete(Guid id)
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
@@ -31,12 +37,11 @@ namespace Store.Domain.Data
             }
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public  IEnumerable<T> GetAll()
         {
-            using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
-            {
-                 return await context.Set<T>().ToListAsync();
-            }
+            StoreDbContext context = _storeDbContextFactory.CreateDbContext();
+            return context.Set<T>();
+            
         }
 
         public async Task<T> Insert(T entity)

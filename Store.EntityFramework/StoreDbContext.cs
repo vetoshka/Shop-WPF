@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Store.Domain;
+using Store.Domain.Models;
 
 namespace Store.EntityFramework
 {
    public class StoreDbContext : DbContext
     {
+        public StoreDbContext(DbContextOptions options):base(options) {}
         public DbSet<Product> Products { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
@@ -18,12 +20,6 @@ namespace Store.EntityFramework
         public DbSet<ShippingMethod> ShippingMethods { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseLazyLoadingProxies()
-                .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=StoreDatadb;Trusted_Connection=True;");
-        }
+        public DbSet<User> Users { get; set; }
     }
 }

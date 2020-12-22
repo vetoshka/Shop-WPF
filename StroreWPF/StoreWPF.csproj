@@ -10,8 +10,8 @@
       <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Store.EntityFramework\Store.EntityFramework.csproj" />
     <ProjectReference Include="..\Store.Entity\Store.Domain.csproj" />
-    <ProjectReference Include="..\Store.Services\Store.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\MainWindow.xaml">
@@ -24,6 +24,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
   </ItemGroup>
 </Project>

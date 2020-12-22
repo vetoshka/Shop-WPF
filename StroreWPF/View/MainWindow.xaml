@@ -92,8 +92,7 @@
                                     </BeginStoryboard>
                                 </EventTrigger>
                             </StackPanel.Triggers>
-                                <Image Name="Image"
-                   Width="100" Height="75" Source="{Binding  Path=ImageSource}" >
+                                <Image Name="Image" Width="100" Height="75" Source="{Binding  Path=ImageSource}" >
                                     <Image.Triggers>
                                         <EventTrigger RoutedEvent="Image.MouseEnter">
                                             <BeginStoryboard>

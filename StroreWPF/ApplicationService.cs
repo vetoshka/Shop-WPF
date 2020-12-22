@@ -2,7 +2,7 @@
 
 namespace StoreWPF
 {
-    public class ApplicationService
+    public class ApplicationService:IEventAggregator
     {
         private ApplicationService() { }
 
@@ -11,6 +11,11 @@ namespace StoreWPF
         private IEventAggregator _eventAggregator;
         internal IEventAggregator EventAggregator {
             get { return _eventAggregator ??= new EventAggregator(); }
+        }
+
+        public TEventType GetEvent<TEventType>() where TEventType : EventBase, new()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

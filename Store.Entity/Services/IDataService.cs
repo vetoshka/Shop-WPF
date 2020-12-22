@@ -10,6 +10,6 @@ namespace Store.Domain.Services
         Task<T> Update(Guid id, T entity);
         Task<T> Get(Guid id);
         Task<bool> Delete(Guid id);
-        Task <IEnumerable<T>> GetAll();
+        IEnumerable<T> GetAll();
     }
 }
