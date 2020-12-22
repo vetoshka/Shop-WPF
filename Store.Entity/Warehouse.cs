@@ -1,10 +1,10 @@
 ﻿using System;
+using Store.Domain.Models;
 
 namespace Store.Domain
 {
-    public class Warehouse
+    public class Warehouse:DomainObject
     {
-        public Guid WarehouseId { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
         public string City { get; set; }

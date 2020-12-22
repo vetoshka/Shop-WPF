@@ -1,10 +1,10 @@
 ﻿using System;
+using Store.Domain.Models;
 
 namespace Store.Domain
 {
-    public class Product
+    public class Product : DomainObject
     {
-        public Guid ProductId { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }

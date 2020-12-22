@@ -1,10 +1,10 @@
 ﻿using System;
+using Store.Domain.Models;
 
 namespace Store.Domain
 {
-    public class Address
+    public class Address : DomainObject
     {
-        public Guid AddressId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

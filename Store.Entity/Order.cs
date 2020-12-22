@@ -1,10 +1,10 @@
 ﻿using System;
+using Store.Domain.Models;
 
 namespace Store.Domain
 {
-    public class Order
+    public class Order : DomainObject
     {
-        public Guid OrderId { get; set; }
         public Guid ShoppingCartId { get; set; }
 
         public virtual ShoppingCart ShoppingCart { get; set; }

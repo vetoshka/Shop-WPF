@@ -1,10 +1,10 @@
 ﻿using System;
+using Store.Domain.Models;
 
 namespace Store.Domain
 {
-    public class ShippingMethod
+    public class ShippingMethod : DomainObject
     {
-        public Guid ShippingMethodId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

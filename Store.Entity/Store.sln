@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Domain", "Store.Domain.csproj", "{CDCEA24D-674B-4EE1-A0CD-117BE043259D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Services", "..\Store.Services\Store.Services.csproj", "{0855AF7E-6533-4A42-A7FB-3D67B26986CE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreWPF", "..\StroreWPF\StoreWPF.csproj", "{D34A818B-BC2E-4E4E-9165-BF35BC104F1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.EntityFramework", "..\Store.EntityFramework\Store.EntityFramework.csproj", "{E938FB6A-CC53-4F0C-800E-EBC9B3591C1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.EntityFramework", "..\Store.EntityFramework\Store.EntityFramework.csproj", "{E938FB6A-CC53-4F0C-800E-EBC9B3591C1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{CDCEA24D-674B-4EE1-A0CD-117BE043259D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDCEA24D-674B-4EE1-A0CD-117BE043259D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDCEA24D-674B-4EE1-A0CD-117BE043259D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0855AF7E-6533-4A42-A7FB-3D67B26986CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0855AF7E-6533-4A42-A7FB-3D67B26986CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0855AF7E-6533-4A42-A7FB-3D67B26986CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0855AF7E-6533-4A42-A7FB-3D67B26986CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D34A818B-BC2E-4E4E-9165-BF35BC104F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D34A818B-BC2E-4E4E-9165-BF35BC104F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D34A818B-BC2E-4E4E-9165-BF35BC104F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU

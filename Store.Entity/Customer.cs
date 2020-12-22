@@ -1,10 +1,10 @@
 ﻿using System;
+using Store.Domain.Models;
 
 namespace Store.Domain
 {
-    public class Customer
+    public class Customer:DomainObject
     {
-        public Guid CustomerId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public bool FreeShipping { get; set; }
