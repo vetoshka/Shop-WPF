@@ -1,12 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.ComponentModel.Design;
+using System.Net;
 using System.Windows;
+using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Prism.Events;
 using Store.Domain;
+using Store.Domain.Models;
 using Store.Domain.Services;
+using Store.Domain.Services.AuthenticationServices;
 using Store.EntityFramework;
+using Store.EntityFramework.Services;
 using StoreWPF.View;
 using StoreWPF.ViewModel;
 
@@ -23,8 +28,8 @@ namespace StoreWPF
 
             Window window = new MainWindow
             {
-                DataContext = serviceProvider.GetService<MainWindowVM>(),
-                AdminPanelVm = serviceProvider.GetService<AdminPanelVM>()
+                DataContext = serviceProvider.GetRequiredService<MainWindowVM>(),
+                AdminPanelVm = serviceProvider.GetRequiredService<AdminPanelVM>()
             };
             window.Show();
             base.OnStartup(e);
@@ -32,13 +37,21 @@ namespace StoreWPF
         private IServiceProvider СreateServiceProvider()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddScoped<StoreDbContextFactory>();
-            services.AddScoped<IDataService<Warehouse>, GenericDataService<Warehouse>>();
-            services.AddScoped<IDataService<Product>, GenericDataService<Product>>();
-            services.AddScoped<IDataService<Vendor>, GenericDataService<Vendor>>();
-            services.AddScoped<IDataService<Order>, GenericDataService<Order>>();
-            services.AddScoped<IDataService<ShoppingCart>, GenericDataService<ShoppingCart>>();
-            services.AddScoped<IDataService<ShoppingCartItem>, GenericDataService<ShoppingCartItem>>();
+            services.AddSingleton<StoreDbContextFactory>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<IDataService<Account>, AccountDataService>();
+            services.AddSingleton<IAccountService, AccountDataService>();
+
+            services.AddSingleton<IPasswordHasher, PasswordHasher>();
+
+            services.AddSingleton<IDataService<Warehouse>, GenericDataService<Warehouse>>();
+            services.AddSingleton<IDataService<Product>, GenericDataService<Product>>();
+            services.AddSingleton<IDataService<Vendor>, GenericDataService<Vendor>>();
+            services.AddSingleton<IDataService<Order>, GenericDataService<Order>>();
+            services.AddSingleton<IDataService<ShoppingCart>, GenericDataService<ShoppingCart>>();
+            services.AddSingleton<IDataService<ShoppingCartItem>, GenericDataService<ShoppingCartItem>>();
+            
+            
             services.AddScoped<AdminPanelVM>();
             services.AddScoped<MainWindowVM>();
 

@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Store.Entity\Store.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
