@@ -68,7 +68,7 @@ namespace Store.EntityFramework.Services
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                return await context.Accounts.FirstOrDefaultAsync((e) => e.AccountHolder.Name == username);
+                return await context.Accounts.FirstOrDefaultAsync((e) => e.AccountHolder.UserName == username);
             }
         }
 

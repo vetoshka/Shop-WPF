@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Store.Domain.Models;
 
-namespace Store.Domain
+namespace Store.Domain.Models
 {
     public class ShoppingCart :DomainObject
     {
-        public Guid? CustomerId { get; set; }
+        public Guid? AccountId { get; set; }
 
         private ICollection<ShoppingCartItem> _shoppingCartItems;
         public virtual ICollection<ShoppingCartItem> ShoppingCartItems

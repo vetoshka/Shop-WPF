@@ -2,13 +2,13 @@
 
 namespace Store.Domain.Models
 {
-   public class User 
+   public class User : DomainObject
     {
 
-        public Guid UserId { get; set; }
         public string Email { get; set; }
-        public string Name { get; set;}
+        public string UserName { get; set;}
         public string PasswordHash { get; set; }
-        public  DateTimeOffset DatedJoined { get; set; }
+        public bool IsAdministrator { get; set; }
+
     }
 }

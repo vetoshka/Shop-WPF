@@ -4,6 +4,7 @@ using Store.Domain;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Store.Domain.Models;
 using Store.Domain.Services;
 
 namespace StoreWPF.ViewModel
@@ -61,7 +62,6 @@ namespace StoreWPF.ViewModel
             _addressService.Insert(address);
             var order = new Order()
             {
-                CustomerId = Guid.NewGuid(),
                 OrderNumber = _orderService.GetAll().Count() + 1,
                 PaymentMethodId = SelectedPaymentMethod.Id,
                 ShippingMethodId = SelectedShippingMethod.Id,

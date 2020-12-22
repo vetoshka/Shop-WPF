@@ -49,8 +49,8 @@ namespace Store.Domain.Services.AuthenticationServices
                 var user = new User()
                 {
                     Email = email,
-                    Name = username,
-                    PasswordHash = hashedPassword;
+                    UserName = username,
+                    PasswordHash = hashedPassword
                 };
 
                 Account account = new Account()

@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Store.Domain;
 using System.Collections.ObjectModel;
+using Store.Domain.Models;
 using Store.Domain.Services;
 
 namespace StoreWPF.ViewModel

@@ -31,7 +31,7 @@ namespace StoreWPF.View
         {
 
             Hide();
-            _mainWindow.ShowMe();
+            _mainWindow.Show();
         }
     }
 }

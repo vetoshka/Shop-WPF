@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Prism.Events;
 using Store.Domain;
+using Store.Domain.Models;
 
 namespace StoreWPF
 {

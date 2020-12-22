@@ -1,7 +1,6 @@
 ﻿using System;
-using Store.Domain.Models;
 
-namespace Store.Domain
+namespace Store.Domain.Models
 {
     public class Product : DomainObject
     {

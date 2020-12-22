@@ -10,8 +10,8 @@ using Store.EntityFramework;
 namespace Store.EntityFramework.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20201221192856_initial")]
-    partial class initial
+    [Migration("20201222211253_add-init")]
+    partial class addinit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,10 +21,35 @@ namespace Store.EntityFramework.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("Store.Domain.Address", b =>
+            modelBuilder.Entity("Store.Domain.Models.Account", b =>
                 {
-                    b.Property<Guid>("AddressId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AccountHolderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AddressId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountHolderId");
+
+                    b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("Store.Domain.Models.Address", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("City")
@@ -48,69 +73,20 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Street")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Store.Domain.Customer", b =>
+            modelBuilder.Entity("Store.Domain.Models.Order", b =>
                 {
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AddressId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("FreeShipping")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsAdministrator")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CustomerId");
-
-                    b.HasIndex("AddressId");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("Store.Domain.Models.User", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("DatedJoined")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Store.Domain.Order", b =>
-                {
-                    b.Property<Guid>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("OrderNumber")
@@ -137,16 +113,18 @@ namespace Store.EntityFramework.Migrations
                     b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
 
                     b.HasIndex("ShoppingCartId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Store.Domain.PaymentMethod", b =>
+            modelBuilder.Entity("Store.Domain.Models.PaymentMethod", b =>
                 {
-                    b.Property<Guid>("PaymentMethodId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -156,14 +134,14 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PaymentMethodId");
+                    b.HasKey("Id");
 
                     b.ToTable("PaymentMethods");
                 });
 
-            modelBuilder.Entity("Store.Domain.Product", b =>
+            modelBuilder.Entity("Store.Domain.Models.Product", b =>
                 {
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -203,45 +181,28 @@ namespace Store.EntityFramework.Migrations
                     b.Property<double>("Width")
                         .HasColumnType("float");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Store.Domain.ShippingMethod", b =>
+            modelBuilder.Entity("Store.Domain.Models.ShoppingCart", b =>
                 {
-                    b.Property<Guid>("ShippingMethodId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ShippingMethodId");
-
-                    b.ToTable("ShippingMethods");
-                });
-
-            modelBuilder.Entity("Store.Domain.ShoppingCart", b =>
-                {
-                    b.Property<Guid>("ShoppingCartId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid?>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ShoppingCartId");
+                    b.HasKey("Id");
 
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("Store.Domain.ShoppingCartItem", b =>
+            modelBuilder.Entity("Store.Domain.Models.ShoppingCartItem", b =>
                 {
-                    b.Property<Guid>("ShoppingCartItemId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -251,16 +212,39 @@ namespace Store.EntityFramework.Migrations
                     b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ShoppingCartItemId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ShoppingCartId");
 
                     b.ToTable("ShoppingCartItems");
                 });
 
-            modelBuilder.Entity("Store.Domain.Vendor", b =>
+            modelBuilder.Entity("Store.Domain.Models.User", b =>
                 {
-                    b.Property<Guid>("VendorId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdministrator")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Store.Domain.Models.Vendor", b =>
+                {
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -276,14 +260,14 @@ namespace Store.EntityFramework.Migrations
                     b.Property<Guid?>("WarehouseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("VendorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Vendors");
                 });
 
-            modelBuilder.Entity("Store.Domain.Warehouse", b =>
+            modelBuilder.Entity("Store.Domain.Models.Warehouse", b =>
                 {
-                    b.Property<Guid>("WarehouseId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -296,23 +280,53 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("WarehouseId");
+                    b.HasKey("Id");
 
                     b.ToTable("Warehouses");
                 });
 
-            modelBuilder.Entity("Store.Domain.Customer", b =>
+            modelBuilder.Entity("Store.Domain.ShippingMethod", b =>
                 {
-                    b.HasOne("Store.Domain.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Navigation("Address");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShippingMethods");
                 });
 
-            modelBuilder.Entity("Store.Domain.Order", b =>
+            modelBuilder.Entity("Store.Domain.Models.Account", b =>
                 {
-                    b.HasOne("Store.Domain.ShoppingCart", "ShoppingCart")
+                    b.HasOne("Store.Domain.Models.User", "AccountHolder")
+                        .WithMany()
+                        .HasForeignKey("AccountHolderId");
+
+                    b.Navigation("AccountHolder");
+                });
+
+            modelBuilder.Entity("Store.Domain.Models.Address", b =>
+                {
+                    b.HasOne("Store.Domain.Models.Account", null)
+                        .WithMany("Addresses")
+                        .HasForeignKey("AccountId");
+                });
+
+            modelBuilder.Entity("Store.Domain.Models.Order", b =>
+                {
+                    b.HasOne("Store.Domain.Models.Account", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Store.Domain.Models.ShoppingCart", "ShoppingCart")
                         .WithMany()
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -321,16 +335,23 @@ namespace Store.EntityFramework.Migrations
                     b.Navigation("ShoppingCart");
                 });
 
-            modelBuilder.Entity("Store.Domain.ShoppingCartItem", b =>
+            modelBuilder.Entity("Store.Domain.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("Store.Domain.ShoppingCart", null)
+                    b.HasOne("Store.Domain.Models.ShoppingCart", null)
                         .WithMany("ShoppingCartItems")
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Store.Domain.ShoppingCart", b =>
+            modelBuilder.Entity("Store.Domain.Models.Account", b =>
+                {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Store.Domain.Models.ShoppingCart", b =>
                 {
                     b.Navigation("ShoppingCartItems");
                 });
