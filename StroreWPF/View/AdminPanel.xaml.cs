@@ -11,12 +11,12 @@ namespace StoreWPF.View
     public partial class AdminPanel : Window
     {
 
-        private readonly MainWindow _mainWindow;
-        public AdminPanel(MainWindow mainWindow, AdminPanelVM adminPanelVm)
+        private MainWindow _mainWindow;
+        public AdminPanel(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            DataContext = adminPanelVm;
+            this.DataContext = new AdminPanelVM(ApplicationService.Instance.EventAggregator);
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {

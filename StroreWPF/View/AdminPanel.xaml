@@ -39,7 +39,7 @@
             <TabItem Name="AddProduct" Header="AddProduct" Margin="-2,-2,-39,-8">
                 <TabItem.Content>
                     <Canvas Name="AddProductCanvas" Width="546">
-                        <Label Content="UserName:"  Canvas.Top="16"/>
+                        <Label Content="Name:"  Canvas.Top="16"/>
                         <TextBox  Text="{Binding Path=Name , UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="213" 
                                  Opacity="1" Canvas.Left="-1" Canvas.Top="41" Height="17"/>
                         <Label Content="Short description:"  Canvas.Left="-1" Canvas.Top="58"/>
@@ -97,7 +97,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </ScrollViewer>
-                        <Label Content="UserName:" />
+                        <Label Content="Name:" />
                         <TextBox Name="VendorName" Text="{Binding NameV, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="82"  Opacity="1" Canvas.Top="25" Height="16"/>
                         <Label Content="Email:"  Canvas.Left="222" RenderTransformOrigin="-2.139,-1.877"/>
                         <Label Content="Country:"  Canvas.Left="489"/>

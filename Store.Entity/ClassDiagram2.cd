@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Store.Domain.Services.AuthenticationServices.AuthenticationService">
+    <Position X="1" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAABAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\AuthenticationServices\AuthenticationService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_accountService" />
+      <Field Name="_passwordHasher" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Right" Position="1.288" />
+  </Class>
+  <Interface Name="Store.Domain.Services.AuthenticationServices.IAuthenticationService">
+    <Position X="3.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Services\AuthenticationServices\IAuthenticationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Store.Domain.Services.IAccountService">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IAccountService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Store.Domain.Services.IDataService&lt;T&gt;">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Services\IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.AspNet.Identity.IPasswordHasher">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="Store.Domain.Services.AuthenticationServices.RegistrationResult">
+    <Position X="3.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAACAAAAAAgAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Services\AuthenticationServices\IAuthenticationService.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -13,11 +13,10 @@ namespace StoreWPF.View
             InitializeComponent();
             _mainWindow = mainWindow;
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _mainWindow.Show();
-           // _mainWindow.shoppingCartWindow = new ShoppingCartWindow(_mainWindow);
+            _mainWindow.shoppingCartWindow = new ShoppingCartWindow(_mainWindow);
             Close();
 
         }

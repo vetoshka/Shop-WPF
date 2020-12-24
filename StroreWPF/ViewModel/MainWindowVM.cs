@@ -9,26 +9,28 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Store.Domain.Models;
 using Store.Domain.Services;
+using Store.EntityFramework;
 
 namespace StoreWPF.ViewModel
 {
     public class MainWindowVM : BindableBase
     {
 
-        private readonly IDataService<Product> _productService;
-        private readonly IDataService<ShoppingCart> _shoppingCartService;
-        private readonly IDataService<ShoppingCartItem> _shoppingCartItemService;
+        private readonly IDataService<Product> _productService = new GenericDataService<Product>(new StoreDbContextFactory());
+        private readonly IDataService<ShoppingCart> _shoppingCartService = new GenericDataService<ShoppingCart>(new StoreDbContextFactory());
+        private readonly IDataService<ShoppingCartItem> _shoppingCartItemService = new GenericDataService<ShoppingCartItem>(new StoreDbContextFactory());
 
         private ShoppingCart shoppingCart;
 
-        public  MainWindowVM(IDataService<Product> productService, IDataService<ShoppingCart> shoppingCartService,
-            IDataService<ShoppingCartItem> shoppingCartItemService)
+        public  MainWindowVM(IEventAggregator eventAggregator)
         {
-            _shoppingCartService = shoppingCartService;
-            _productService = productService;
-            _shoppingCartItemService = shoppingCartItemService;
+
+            _eventAggregator = eventAggregator;
             Products = new ObservableCollection<Product>(_productService.GetAll());
+            _eventAggregator.GetEvent<InsertProductEvent>()
+                .Subscribe((product) => { Products.Add(product); });
             shoppingCart = CreateShoppingCart();
+
 
 
 
@@ -54,8 +56,14 @@ namespace StoreWPF.ViewModel
                 ShoppingCartId = shoppingCart.Id
             };
             _shoppingCartItemService.Insert(shoppingCartItem);
+            _eventAggregator.GetEvent<AddItemToShoppingCartEvent>().Publish(product);
         }
+
+        private IEventAggregator _eventAggregator;
+
         public ObservableCollection<Product> Products { get; set; }
+
+        public ObservableCollection<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DelegateCommand<Product> AddProductToShoppingCart { get; }
     }
 }

@@ -6,6 +6,7 @@ using Store.Domain;
 using System.Collections.ObjectModel;
 using Store.Domain.Models;
 using Store.Domain.Services;
+using Store.EntityFramework;
 
 namespace StoreWPF.ViewModel
 {
@@ -36,20 +37,16 @@ namespace StoreWPF.ViewModel
 
 
 
-        private readonly IDataService<Warehouse> _warehouseService;
-        private readonly IDataService<Vendor> _vendorService;
-        private readonly IDataService<Product> _productService;
-        private readonly IDataService<Order> _orderService ;
+        private readonly IDataService<Warehouse> _warehouseService = new GenericDataService<Warehouse>(new StoreDbContextFactory());
+        private readonly IDataService<Vendor> _vendorService = new GenericDataService<Vendor>(new StoreDbContextFactory());
+        private readonly IDataService<Product> _productService= new GenericDataService<Product>(new StoreDbContextFactory());
+        private readonly IDataService<Order> _orderService = new GenericDataService<Order>(new StoreDbContextFactory()) ;
+        private IEventAggregator _eventAggregator;
 
 
-
-        public AdminPanelVM( IDataService<Warehouse> warehouseService, IDataService<Vendor> vendorService,
-            IDataService<Product> productService, IDataService<Order> orderService)
+        public AdminPanelVM(IEventAggregator eventAggregator)
         {
-            _productService = productService;
-            _warehouseService = warehouseService;
-            _orderService = orderService;
-            _vendorService = vendorService;
+            _eventAggregator = eventAggregator;
             Warehouses = new ObservableCollection<Warehouse>(_warehouseService.GetAll());
             Vendors = new ObservableCollection<Vendor>(_vendorService.GetAll());
             Orders = new ObservableCollection<Order>(_orderService.GetAll());
@@ -111,6 +108,7 @@ namespace StoreWPF.ViewModel
                 Weight = Weight
             };
             _productService.Insert(product);
+            _eventAggregator.GetEvent<InsertProductEvent>().Publish(product);
         }
 
         public ObservableCollection<Vendor> Vendors { get; set; }

@@ -44,8 +44,7 @@
 
         <Button Name="ShoppingCartButton" Content="Shopping Cart" Margin="681,52,0,0"  Height="30" Width="92" Click="ShoppingCartButton_Click" />
         <Rectangle HorizontalAlignment="Center" Height="28" Stroke="#FF2B3068" VerticalAlignment="Top" Width="800" Fill="#FFA3ABFF"/>
-        <Button Name="AdminPanel" Content="Admin" Margin="654,4,0,0" Height="20" Width="50" Click="AdminButton_Click"/>
-        <Button Content="Account" Margin="723,4,0,0" Height="20" Width="50" RenderTransformOrigin="0.159,0.664" />
+        <Button Name="Account" Content="Admin" Margin="727,0,0,0" Height="20" Width="50" Click="AdminButton_Click"/>
         <ScrollViewer Name="ProductScrollMain" Height="518" Margin="82,120,73,46" CanContentScroll="True">
            
                 <ItemsControl  ItemsSource="{Binding Products}" >
@@ -113,7 +112,7 @@
                        
         <TextBlock FontSize="16" Text="{Binding Path=Name}" HorizontalAlignment="Center" />
         <TextBlock FontSize="16"  Name="Cost" Text="{Binding Path=Cost}" HorizontalAlignment="Center" />
-                            <Button Opacity="0.0" HorizontalAlignment="Center" Name="AddToCart"  Content="Add to Cart"  Command="{Binding DataContext.AddProductToShoppingCart,
+                            <Button Opacity="100" HorizontalAlignment="Center" Name="AddToCart"  Content="Add to Cart"  Command="{Binding DataContext.AddProductToShoppingCart,
          RelativeSource={RelativeSource AncestorType=ItemsControl} }" CommandParameter="{Binding}">
         </Button>
     </StackPanel>

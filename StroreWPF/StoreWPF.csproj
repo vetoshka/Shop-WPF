@@ -9,6 +9,9 @@
       <PropertyGroup>
       <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
+      <ItemGroup>
+        <None Remove="pallet.jpg" />
+      </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Store.EntityFramework\Store.EntityFramework.csproj" />
     <ProjectReference Include="..\Store.Entity\Store.Domain.csproj" />
@@ -27,5 +30,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="pallet.jpg" />
   </ItemGroup>
 </Project>

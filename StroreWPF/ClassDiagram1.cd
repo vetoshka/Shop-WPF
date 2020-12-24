@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StoreWPF.ViewModel.LogViewModel">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAQAAAAAAAAABACAAAAAAAAAEA=</HashCode>
+      <FileName>ViewModel\LogViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_authenticationService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StoreWPF.ViewModel.MainWindowVM">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQDAAAAQAAAgIAAAAAAAAAAAAIgAAAAAAAAAgQ=</HashCode>
+      <FileName>ViewModel\MainWindowVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_eventAggregator" />
+      <Field Name="_productService" />
+      <Field Name="_shoppingCartItemService" />
+      <Field Name="_shoppingCartService" />
+      <Field Name="shoppingCart" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StoreWPF.ViewModel.OrderVM">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAmCgACASEAAIEAAAQAAQAEAAAAAAICIAAAAAEAw=</HashCode>
+      <FileName>ViewModel\OrderVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_addressService" />
+      <Field Name="_orderService" />
+      <Field Name="_paymentMethodService" />
+      <Field Name="_shippingMethodService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StoreWPF.ViewModel.RegisterViewModel">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAQAAAAAAABAAACAQAAAAAAAEA=</HashCode>
+      <FileName>ViewModel\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_authenticationService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StoreWPF.ViewModel.ShoppingCartVM">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ShoppingCartVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_eventAggregator" />
+      <Field Name="_shoppingCartItemService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Store.Domain.Models.ShoppingCart">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Store.Domain.Services.IDataService&lt;T&gt;">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Prism.Events.IEventAggregator">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Store.Domain.Services.AuthenticationServices.IAuthenticationService">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,9 @@ namespace Store.EntityFramework.Services
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                Account entity = await context.Accounts.FirstOrDefaultAsync((e) => e.Id == id);
+                Account entity = await context.Accounts
+                    .Include(a => a.User)
+                    .FirstOrDefaultAsync((e) => e.Id == id);
                 return entity;
             }
         }
@@ -39,7 +42,7 @@ namespace Store.EntityFramework.Services
         public IEnumerable<Account> GetAll()
         {
             StoreDbContext context = _storeDbContextFactory.CreateDbContext();
-            return context.Set<Account>();
+            return context.Accounts.Include(a => a.User);
 
         }
 
@@ -64,19 +67,23 @@ namespace Store.EntityFramework.Services
             }
         }
 
-        public async Task<Account> GetByUserName(string username)
+        public  Account GetByUserName(string username)
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                return await context.Accounts.FirstOrDefaultAsync((e) => e.AccountHolder.UserName == username);
+                return  context.Accounts
+                    .Include(a => a.User)
+                    .FirstOrDefault((e) => e.User.UserName == username);
             }
         }
 
-        public async Task<Account> GetByEmail(string email)
+        public Account GetByEmail(string email)
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                 return await context.Accounts.FirstOrDefaultAsync((e) => e.AccountHolder.Email == email);
+                 return  context.Accounts
+                     .Include(a=> a.User)   
+                     .FirstOrDefault((e) => e.User.Email == email);
             }
         }
     }

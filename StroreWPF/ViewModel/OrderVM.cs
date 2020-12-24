@@ -6,15 +6,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Store.Domain.Models;
 using Store.Domain.Services;
+using Store.EntityFramework;
 
 namespace StoreWPF.ViewModel
 {
     public class OrderVM : BindableBase
     {
-        private readonly IDataService<Order> _orderService;
-        private readonly IDataService<Address> _addressService;
-        private readonly IDataService<ShippingMethod> _shippingMethodService;
-        private readonly IDataService<PaymentMethod> _paymentMethodService ;
+        private readonly IDataService<Order> _orderService = new GenericDataService<Order>(new StoreDbContextFactory());
+        private readonly IDataService<Address> _addressService = new GenericDataService<Address>(new StoreDbContextFactory());
+        private readonly IDataService<ShippingMethod> _shippingMethodService = new GenericDataService<ShippingMethod>(new StoreDbContextFactory());
+        private readonly IDataService<PaymentMethod> _paymentMethodService= new GenericDataService<PaymentMethod>(new StoreDbContextFactory()) ;
         public ShippingMethod SelectedShippingMethod { get; set; }
         public PaymentMethod SelectedPaymentMethod { get; set; }
 
@@ -32,14 +33,9 @@ namespace StoreWPF.ViewModel
 
         public double Sum { get; set; }
 
-        public OrderVM( IDataService<Order> orderService, IDataService<Address> addressService, IDataService<ShippingMethod> shippingMethodService,
-            IDataService<PaymentMethod> paymentMethodService)
+        public OrderVM()
         {
-            _paymentMethodService = paymentMethodService;
-            _shippingMethodService = shippingMethodService;
-            _addressService = addressService;
-            _paymentMethodService = paymentMethodService;
-            _orderService = orderService;
+            
             ShippingMethods = new ObservableCollection<ShippingMethod>(_shippingMethodService.GetAll());
             PaymentMethods = new ObservableCollection<PaymentMethod>(_paymentMethodService.GetAll());
             AddOrder = new DelegateCommand(CreateOrder);

@@ -28,12 +28,13 @@
     </Window.Resources>
     <Canvas Margin="0,0,10,0">
         <Label Content="Entrance to the personal account" Canvas.Left="135" Canvas.Top="20"  />
-        <TextBox Canvas.Left="148" Canvas.Top="113" Text="{Binding Email }" TextWrapping="Wrap"/>
-        <Label Content="E-mail" Canvas.Left="250" Canvas.Top="73"/>
+        <TextBox Canvas.Left="148" Canvas.Top="113" Text="{Binding Username }" TextWrapping="Wrap"/>
+        <Label Content="Username" Canvas.Left="234" Canvas.Top="73"/>
         <Label Content="Password" Canvas.Left="236" Canvas.Top="164"/>
         <TextBox Canvas.Left="148" Canvas.Top="204" Text="{Binding Password}" TextWrapping="Wrap"/>
-        <Button Content="Log in" Canvas.Left="148" Canvas.Top="267" Width="273" Height="30" Background="#FFD9DBFF"/>
-        <Button Content="Register" Canvas.Left="355" Canvas.Top="313" Background="#FFBCBFFF" BorderBrush="#FFBCBFFF" FontSize="16" Width="66" FontStyle="Normal">
+        <Button Content="Log in" Canvas.Left="148" Canvas.Top="267" Width="273" Height="30" Background="#FFD9DBFF" Command="{Binding LogIn}" Click="Button_Click_1"/>
+        <Button Content="Register" Canvas.Left="355" Canvas.Top="313" Background="#FFBCBFFF" BorderBrush="#FFBCBFFF" FontSize="16"
+                Width="66" FontStyle="Normal" Click="Button_Click"  >
             <Button.Template>
                 <ControlTemplate>
                     <TextBlock TextDecorations="Underline" Text="Register"></TextBlock>

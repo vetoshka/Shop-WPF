@@ -19,7 +19,7 @@ namespace Store.Domain.Services.AuthenticationServices
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<RegistrationResult> Register(string email, string username, string password, string confirmPassword)
+        public RegistrationResult Register(string email, string username, string password, string confirmPassword)
         {
             RegistrationResult result = RegistrationResult.Success;
 
@@ -28,7 +28,7 @@ namespace Store.Domain.Services.AuthenticationServices
                 result = RegistrationResult.PasswordsDoNotMatch;
             }
 
-            var emailAccount = await _accountService.GetByEmail(email);
+            var emailAccount =  _accountService.GetByEmail(email);
 
             if (emailAccount != null)
             {
@@ -36,7 +36,7 @@ namespace Store.Domain.Services.AuthenticationServices
             }
 
 
-            var usernameAccount = await _accountService.GetByUserName(username);
+            var usernameAccount =  _accountService.GetByUserName(username);
 
             if (usernameAccount != null)
             {
@@ -55,22 +55,26 @@ namespace Store.Domain.Services.AuthenticationServices
 
                 Account account = new Account()
                 {
-                    AccountHolder = user
+                    User = user
                 };
-                await _accountService.Insert(account);
+                 _accountService.Insert(account);
             }
 
             return result;
         }
 
-        public  async Task<Account> Login(string username, string password)
+        public Account Login(string username, string password)
         {
-            Account storedAccount = await _accountService.GetByUserName(username);
+            Account storedAccount = _accountService.GetByUserName(username);
+            if (storedAccount == null)
+            {
+                throw new InvalidPasswordException(username, password);
+            }
             var  passwordsResult =
-                _passwordHasher.VerifyHashedPassword(storedAccount.AccountHolder.PasswordHash, password);
+                _passwordHasher.VerifyHashedPassword(storedAccount.User.PasswordHash, password);
+         
 
-
-            if (passwordsResult == PasswordVerificationResult.Success)
+            if (passwordsResult != PasswordVerificationResult.Success)
             {
                 throw new InvalidPasswordException(username, password);
             }

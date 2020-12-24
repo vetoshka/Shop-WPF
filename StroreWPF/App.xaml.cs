@@ -26,10 +26,10 @@ namespace StoreWPF
         {
             IServiceProvider serviceProvider = СreateServiceProvider();
 
-            Window window = new MainWindow
+            var window = new LogWindow(serviceProvider.GetRequiredService<LogViewModel>())
             {
-                DataContext = serviceProvider.GetRequiredService<MainWindowVM>(),
-                AdminPanelVm = serviceProvider.GetRequiredService<AdminPanelVM>()
+                registerWindow = new RegisterWindow(serviceProvider.GetRequiredService<RegisterViewModel>()),
+                MainWindow = new MainWindow()
             };
             window.Show();
             base.OnStartup(e);
@@ -44,16 +44,21 @@ namespace StoreWPF
 
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
-            services.AddSingleton<IDataService<Warehouse>, GenericDataService<Warehouse>>();
-            services.AddSingleton<IDataService<Product>, GenericDataService<Product>>();
-            services.AddSingleton<IDataService<Vendor>, GenericDataService<Vendor>>();
-            services.AddSingleton<IDataService<Order>, GenericDataService<Order>>();
-            services.AddSingleton<IDataService<ShoppingCart>, GenericDataService<ShoppingCart>>();
-            services.AddSingleton<IDataService<ShoppingCartItem>, GenericDataService<ShoppingCartItem>>();
+            //services.AddSingleton<IDataService<Warehouse>, GenericDataService<Warehouse>>();
+            //services.AddSingleton<IDataService<Product>, GenericDataService<Product>>();
+            //services.AddSingleton<IDataService<Vendor>, GenericDataService<Vendor>>();
+            //services.AddSingleton<IDataService<Order>, GenericDataService<Order>>();
+            //services.AddSingleton<IDataService<ShoppingCart>, GenericDataService<ShoppingCart>>();
+            //services.AddSingleton<IDataService<ShoppingCartItem>, GenericDataService<ShoppingCartItem>>();
+
+
             
-            
-            services.AddScoped<AdminPanelVM>();
-            services.AddScoped<MainWindowVM>();
+            services.AddScoped<RegisterViewModel>();
+            //services.AddScoped<AdminPanelVM>();
+            //services.AddScoped<ShoppingCartVM>();
+            //services.AddScoped<MainWindowVM>();
+           
+            services.AddScoped<LogViewModel>();
 
             return services.BuildServiceProvider();
         }

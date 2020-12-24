@@ -13,7 +13,7 @@ namespace Store.Domain.Services.AuthenticationServices
     }
     public interface IAuthenticationService
     {
-        Task<RegistrationResult> Register(string email, string username, string password, string confirmPassword);
-        Task<Account> Login(string username, string password);
+        RegistrationResult Register(string email, string username, string password, string confirmPassword);
+        Account Login(string username, string password);
     }
 }

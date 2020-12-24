@@ -10,8 +10,8 @@ using Store.EntityFramework;
 namespace Store.EntityFramework.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20201222211253_add-init")]
-    partial class addinit
+    [Migration("20201223132030_change-order")]
+    partial class changeorder
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,18 +27,18 @@ namespace Store.EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AccountHolderId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AddressId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountHolderId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Accounts");
                 });
@@ -86,7 +86,7 @@ namespace Store.EntityFramework.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
+                    b.Property<Guid?>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("OrderNumber")
@@ -110,14 +110,9 @@ namespace Store.EntityFramework.Migrations
                     b.Property<string>("ShippingStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ShoppingCartId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
-
-                    b.HasIndex("ShoppingCartId");
 
                     b.ToTable("Orders");
                 });
@@ -306,7 +301,7 @@ namespace Store.EntityFramework.Migrations
                 {
                     b.HasOne("Store.Domain.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("AccountHolderId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -322,17 +317,7 @@ namespace Store.EntityFramework.Migrations
                 {
                     b.HasOne("Store.Domain.Models.Account", null)
                         .WithMany("Orders")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Store.Domain.Models.ShoppingCart", "ShoppingCart")
-                        .WithMany()
-                        .HasForeignKey("ShoppingCartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ShoppingCart");
+                        .HasForeignKey("AccountId");
                 });
 
             modelBuilder.Entity("Store.Domain.Models.ShoppingCartItem", b =>
