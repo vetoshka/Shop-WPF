@@ -1,17 +1,16 @@
 ﻿using Prism.Events;
 using Prism.Mvvm;
-using Store.Domain;
-using System.Collections.ObjectModel;
 using Store.Domain.Models;
 using Store.Domain.Services;
 using Store.EntityFramework;
+using System.Collections.ObjectModel;
 
 namespace StoreWPF.ViewModel
 {
     public class ShoppingCartVM : BindableBase
     {
-        readonly IDataService<ShoppingCartItem> _shoppingCartItemService  = new GenericDataService<ShoppingCartItem>(new StoreDbContextFactory());
-        private IEventAggregator _eventAggregator;
+        private readonly IDataService<ShoppingCartItem> _shoppingCartItemService = new GenericDataService<ShoppingCartItem>(new StoreDbContextFactory());
+        private readonly IEventAggregator _eventAggregator;
 
         public ShoppingCartVM(IEventAggregator eventAggregator)
         {

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Store.Domain.Models;
 using Store.Domain.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.EntityFramework.Services
 {
-  public class AccountDataService :IAccountService
+    public class AccountDataService : IAccountService
     {
         private readonly StoreDbContextFactory _storeDbContextFactory;
 
@@ -50,7 +49,7 @@ namespace Store.EntityFramework.Services
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                var createdEntity = await context.Set<Account>().AddAsync(entity);
+                Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Account> createdEntity = await context.Set<Account>().AddAsync(entity);
                 await context.SaveChangesAsync();
                 return createdEntity.Entity;
             }
@@ -67,11 +66,11 @@ namespace Store.EntityFramework.Services
             }
         }
 
-        public  Account GetByUserName(string username)
+        public Account GetByUserName(string username)
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                return  context.Accounts
+                return context.Accounts
                     .Include(a => a.User)
                     .FirstOrDefault((e) => e.User.UserName == username);
             }
@@ -81,9 +80,9 @@ namespace Store.EntityFramework.Services
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-                 return  context.Accounts
-                     .Include(a=> a.User)   
-                     .FirstOrDefault((e) => e.User.Email == email);
+                return context.Accounts
+                    .Include(a => a.User)
+                    .FirstOrDefault((e) => e.User.Email == email);
             }
         }
     }

@@ -9,7 +9,6 @@
         xmlns:domain="clr-namespace:Store.Domain;assembly=Store.Domain"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="800">
-
     <Window.Resources>
         <Storyboard x:Key="hideMe">
             <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.8" To="0.0"/>
@@ -38,11 +37,9 @@
             <Setter Property="Foreground" Value="#FF2B3068"/>
             <Setter Property="BorderBrush" Value="White"/>
         </Style>
-
     </Window.Resources>
         <Grid>
-
-        <Button Name="ShoppingCartButton" Content="Shopping Cart" Margin="681,52,0,0"  Height="30" Width="92" Click="ShoppingCartButton_Click" />
+            <Button Name="ShoppingCartButton" Content="Shopping Cart" Margin="681,52,0,0"  Height="30" Width="92" Click="ShoppingCartButton_Click" />
         <Rectangle HorizontalAlignment="Center" Height="28" Stroke="#FF2B3068" VerticalAlignment="Top" Width="800" Fill="#FFA3ABFF"/>
         <Button Name="Account" Content="Admin" Margin="727,0,0,0" Height="20" Width="50" Click="AdminButton_Click"/>
         <ScrollViewer Name="ProductScrollMain" Height="518" Margin="82,120,73,46" CanContentScroll="True">
@@ -56,13 +53,11 @@
                 <ItemsControl.ItemTemplate>
 
     <DataTemplate>
-    
         <StackPanel Margin="5">
                             <StackPanel.Triggers>
                                 <EventTrigger RoutedEvent="StackPanel.MouseEnter">
                                     <BeginStoryboard>
                                         <Storyboard>
-                                        
                                             <DoubleAnimation 
                                                     Storyboard.TargetName="AddToCart"
                                                     Storyboard.TargetProperty="Opacity"
@@ -70,7 +65,6 @@
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
-
                                 <EventTrigger RoutedEvent="StackPanel.MouseLeave">
                                     <BeginStoryboard>
                                         <Storyboard>
@@ -109,8 +103,7 @@
                                         </EventTrigger>
                                     </Image.Triggers>
                                 </Image>
-                       
-        <TextBlock FontSize="16" Text="{Binding Path=Name}" HorizontalAlignment="Center" />
+            <TextBlock FontSize="16" Text="{Binding Path=Name}" HorizontalAlignment="Center" />
         <TextBlock FontSize="16"  Name="Cost" Text="{Binding Path=Cost}" HorizontalAlignment="Center" />
                             <Button Opacity="100" HorizontalAlignment="Center" Name="AddToCart"  Content="Add to Cart"  Command="{Binding DataContext.AddProductToShoppingCart,
          RelativeSource={RelativeSource AncestorType=ItemsControl} }" CommandParameter="{Binding}">
@@ -119,9 +112,7 @@
     </DataTemplate>
 </ItemsControl.ItemTemplate>
                 </ItemsControl>
-       
         </ScrollViewer>
-
         <TextBox Name="MyStore" Margin="305,44,0,0" IsReadOnly="True" Text="My Store" Width="160" FontSize="36">
             <TextBox.Triggers>
                 <EventTrigger RoutedEvent="TextBox.Loaded">
@@ -138,6 +129,5 @@
                 </EventTrigger>
             </TextBox.Triggers>
         </TextBox>
-
-    </Grid>
+        </Grid>
 </Window>

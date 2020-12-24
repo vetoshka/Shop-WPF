@@ -4,7 +4,7 @@ namespace Store.Domain.Models
 {
     public class Order : DomainObject
     {
-       // public Guid AccountId { get; set; }
+        // public Guid AccountId { get; set; }
         public Guid ShippingMethodId { get; set; }
         public Guid ShippingAddressId { get; set; }
         public Guid PaymentMethodId { get; set; }

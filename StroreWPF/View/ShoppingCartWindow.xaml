@@ -22,7 +22,6 @@
             <Setter Property="Foreground" Value="#FF2B3068"/>
             <Setter Property="BorderBrush" Value="White"/>
         </Style>
-
     </Window.Resources>
     <Grid>
         <ScrollViewer Name="ProductScrollCart" Margin="63,10,92,92" CanContentScroll="True">

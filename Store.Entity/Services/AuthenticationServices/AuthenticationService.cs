@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Store.Domain.Exceptions;
 using Store.Domain.Models;
 
@@ -28,7 +24,7 @@ namespace Store.Domain.Services.AuthenticationServices
                 result = RegistrationResult.PasswordsDoNotMatch;
             }
 
-            var emailAccount =  _accountService.GetByEmail(email);
+            Account emailAccount = _accountService.GetByEmail(email);
 
             if (emailAccount != null)
             {
@@ -36,7 +32,7 @@ namespace Store.Domain.Services.AuthenticationServices
             }
 
 
-            var usernameAccount =  _accountService.GetByUserName(username);
+            Account usernameAccount = _accountService.GetByUserName(username);
 
             if (usernameAccount != null)
             {
@@ -46,7 +42,7 @@ namespace Store.Domain.Services.AuthenticationServices
             if (result == RegistrationResult.Success)
             {
                 string hashedPassword = _passwordHasher.HashPassword(password);
-                var user = new User()
+                User user = new User()
                 {
                     Email = email,
                     UserName = username,
@@ -57,7 +53,7 @@ namespace Store.Domain.Services.AuthenticationServices
                 {
                     User = user
                 };
-                 _accountService.Insert(account);
+                _accountService.Insert(account);
             }
 
             return result;
@@ -70,9 +66,9 @@ namespace Store.Domain.Services.AuthenticationServices
             {
                 throw new InvalidPasswordException(username, password);
             }
-            var  passwordsResult =
+            PasswordVerificationResult passwordsResult =
                 _passwordHasher.VerifyHashedPassword(storedAccount.User.PasswordHash, password);
-         
+
 
             if (passwordsResult != PasswordVerificationResult.Success)
             {

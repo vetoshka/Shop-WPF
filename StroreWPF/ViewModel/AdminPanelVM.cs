@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using Store.Domain;
-using System.Collections.ObjectModel;
 using Store.Domain.Models;
 using Store.Domain.Services;
 using Store.EntityFramework;
+using System.Collections.ObjectModel;
 
 namespace StoreWPF.ViewModel
 {
@@ -39,9 +37,9 @@ namespace StoreWPF.ViewModel
 
         private readonly IDataService<Warehouse> _warehouseService = new GenericDataService<Warehouse>(new StoreDbContextFactory());
         private readonly IDataService<Vendor> _vendorService = new GenericDataService<Vendor>(new StoreDbContextFactory());
-        private readonly IDataService<Product> _productService= new GenericDataService<Product>(new StoreDbContextFactory());
-        private readonly IDataService<Order> _orderService = new GenericDataService<Order>(new StoreDbContextFactory()) ;
-        private IEventAggregator _eventAggregator;
+        private readonly IDataService<Product> _productService = new GenericDataService<Product>(new StoreDbContextFactory());
+        private readonly IDataService<Order> _orderService = new GenericDataService<Order>(new StoreDbContextFactory());
+        private readonly IEventAggregator _eventAggregator;
 
 
         public AdminPanelVM(IEventAggregator eventAggregator)
@@ -69,7 +67,7 @@ namespace StoreWPF.ViewModel
         }
         private void CreateWarehouse()
         {
-            var warehouse = new Warehouse()
+            Warehouse warehouse = new Warehouse()
             {
                 City = CityW,
                 Country = CountryW,
@@ -80,7 +78,7 @@ namespace StoreWPF.ViewModel
         }
         private void CreateVendor()
         {
-            var vendor = new Vendor()
+            Vendor vendor = new Vendor()
             {
                 Country = CountryV,
                 Email = EmailV,
@@ -92,7 +90,7 @@ namespace StoreWPF.ViewModel
         }
         private void CreateProduct()
         {
-            var product = new Product()
+            Product product = new Product()
             {
                 Name = Name,
                 ShortDescription = ShortDescription,

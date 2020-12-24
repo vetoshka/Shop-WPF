@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Store.Domain.Models;
 using Store.Domain.Services;
-using Store.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Store.EntityFramework
 {
@@ -13,7 +11,7 @@ namespace Store.EntityFramework
     {
         private readonly StoreDbContextFactory _storeDbContextFactory;
 
-        public GenericDataService( StoreDbContextFactory storeDbContextFactory)
+        public GenericDataService(StoreDbContextFactory storeDbContextFactory)
         {
             _storeDbContextFactory = storeDbContextFactory;
         }
@@ -37,18 +35,18 @@ namespace Store.EntityFramework
             }
         }
 
-        public  IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
             StoreDbContext context = _storeDbContextFactory.CreateDbContext();
             return context.Set<T>();
-            
+
         }
 
         public async Task<T> Insert(T entity)
         {
             using (StoreDbContext context = _storeDbContextFactory.CreateDbContext())
             {
-               var createdEntity= await context.Set<T>().AddAsync(entity);
+                Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<T> createdEntity = await context.Set<T>().AddAsync(entity);
                 await context.SaveChangesAsync();
                 return createdEntity.Entity;
             }

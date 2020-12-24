@@ -1,12 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.ComponentModel.Design;
-using System.Net;
-using System.Windows;
-using Microsoft.AspNet.Identity;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Prism.Events;
-using Store.Domain;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Store.Domain.Models;
 using Store.Domain.Services;
 using Store.Domain.Services.AuthenticationServices;
@@ -14,6 +7,8 @@ using Store.EntityFramework;
 using Store.EntityFramework.Services;
 using StoreWPF.View;
 using StoreWPF.ViewModel;
+using System;
+using System.Windows;
 
 namespace StoreWPF
 {
@@ -26,7 +21,7 @@ namespace StoreWPF
         {
             IServiceProvider serviceProvider = СreateServiceProvider();
 
-            var window = new LogWindow(serviceProvider.GetRequiredService<LogViewModel>())
+            LogWindow window = new LogWindow(serviceProvider.GetRequiredService<LogViewModel>())
             {
                 registerWindow = new RegisterWindow(serviceProvider.GetRequiredService<RegisterViewModel>()),
                 MainWindow = new MainWindow()
@@ -52,12 +47,12 @@ namespace StoreWPF
             //services.AddSingleton<IDataService<ShoppingCartItem>, GenericDataService<ShoppingCartItem>>();
 
 
-            
+
             services.AddScoped<RegisterViewModel>();
             //services.AddScoped<AdminPanelVM>();
             //services.AddScoped<ShoppingCartVM>();
             //services.AddScoped<MainWindowVM>();
-           
+
             services.AddScoped<LogViewModel>();
 
             return services.BuildServiceProvider();

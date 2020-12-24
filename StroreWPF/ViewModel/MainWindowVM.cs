@@ -1,15 +1,11 @@
 ﻿using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
-using Store.Domain;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using Store.Domain.Models;
 using Store.Domain.Services;
 using Store.EntityFramework;
+using System;
+using System.Collections.ObjectModel;
 
 namespace StoreWPF.ViewModel
 {
@@ -22,7 +18,7 @@ namespace StoreWPF.ViewModel
 
         private ShoppingCart shoppingCart;
 
-        public  MainWindowVM(IEventAggregator eventAggregator)
+        public MainWindowVM(IEventAggregator eventAggregator)
         {
 
             _eventAggregator = eventAggregator;
@@ -50,7 +46,7 @@ namespace StoreWPF.ViewModel
 
         private void CreateShoppingCartItem(Product product)
         {
-            var shoppingCartItem = new ShoppingCartItem()
+            ShoppingCartItem shoppingCartItem = new ShoppingCartItem()
             {
                 ProductId = product.Id,
                 ShoppingCartId = shoppingCart.Id
@@ -59,7 +55,7 @@ namespace StoreWPF.ViewModel
             _eventAggregator.GetEvent<AddItemToShoppingCartEvent>().Publish(product);
         }
 
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
         public ObservableCollection<Product> Products { get; set; }
 

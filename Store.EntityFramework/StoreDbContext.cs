@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Store.Domain;
 using Store.Domain.Models;
 
 namespace Store.EntityFramework
 {
-   public class StoreDbContext : DbContext
+    public class StoreDbContext : DbContext
     {
-        public StoreDbContext(DbContextOptions options):base(options) {}
+        public StoreDbContext(DbContextOptions options) : base(options) { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Vendor> Vendors { get; set; }

@@ -41,6 +41,5 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-
     </Canvas>
 </Window>

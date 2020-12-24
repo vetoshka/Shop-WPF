@@ -38,6 +38,5 @@
         <Label Content="Repeat password" Canvas.Left="277" Canvas.Top="144"/>
         <TextBox Canvas.Left="260" Canvas.Top="193" Text="{Binding RepeatPassword}" TextWrapping="Wrap" />
         <Button Content="Register" Canvas.Left="36" Canvas.Top="272" Width="421" Height="47" Command="{Binding Register}"/>
-
     </Canvas>
 </Window>

@@ -2,10 +2,10 @@
 
 namespace Store.Domain.Exceptions
 {
-   public class InvalidPasswordException :Exception
+    public class InvalidPasswordException : Exception
     {
-        public  string Username { get; set; }
-        public  string Password { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public InvalidPasswordException(string username, string password)
         {
             Username = username;

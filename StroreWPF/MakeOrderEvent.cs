@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using Prism.Events;
+﻿using Prism.Events;
 using Store.Domain.Models;
+using System.Collections.ObjectModel;
 
 namespace StoreWPF
 {

@@ -1,5 +1,4 @@
-﻿using System;
-using Store.Domain.Models;
+﻿using Store.Domain.Models;
 
 namespace Store.Domain
 {

@@ -27,10 +27,8 @@
             <Setter Property="Foreground" Value="#FF2B3068"/>
             <Setter Property="BorderBrush" Value="White"/>
         </Style>
-
     </Window.Resources>
     <Canvas>
-
         <userControls:AddressUserControl Height="50" DataContext="{Binding}"/>
         <Label Content="Shipping method" Canvas.Left="248" Canvas.Top="12"/>
         <ListBox Height="77" Width="146" SelectedItem="{Binding SelectedShippingMethod}" ItemsSource="{Binding ShippingMethods}" Canvas.Left="226" Canvas.Top="46">
@@ -42,8 +40,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-            
-          
         <Label Content="Payment method" Canvas.Left="496" Canvas.Top="12"/>
         <ListBox Height="85" Width="161" SelectedItem="{Binding SelectedPaymentMethod}" ItemsSource="{Binding PaymentMethods}" Canvas.Left="476" Canvas.Top="38">
             <ListBox.ItemTemplate>
@@ -54,17 +50,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-                 
-
-        <!--<Label Content="Products cost" Canvas.Left="226" Canvas.Top="159"/>
-        <Label Name="ProductsCost" Content="{Binding ProductCost}" Canvas.Left="340" Canvas.Top="160"/>
-        <Label Content="Shipping cost" Canvas.Left="226" Canvas.Top="204"/>
-        <Label Name="ShippingCost" Content="{Binding ShippingCost}" Canvas.Left="345" Canvas.Top="204"/>
-        <Label Content="Sum" Canvas.Left="229" Canvas.Top="249"/>
-        <Label Name="Sum" Content="{Binding Sum}" Canvas.Left="299" Canvas.Top="254"/>-->
         <Button Content="Confirm" Canvas.Left="229" Canvas.Top="323" Command="{Binding AddOrder}" Height="27" Width="52"/>
         <Button Content="Back" Canvas.Left="701" Canvas.Top="389" Height="23" Width="36" Click="Button_Click"/>
-
-
     </Canvas>
 </Window>

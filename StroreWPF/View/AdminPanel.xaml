@@ -7,7 +7,6 @@
         xmlns:viewModel="clr-namespace:StoreWPF.ViewModel"
         mc:Ignorable="d"
         Title="AdminPanel" Height="450" Width="800">
-
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Book Antiqua"/>
@@ -31,10 +30,8 @@
             <Setter Property="Background" Value="#FFA3ABFF"/>
             <Setter Property="BorderBrush" Value="#FFA3ABFF"/>
         </Style>
-
     </Window.Resources>
     <Grid>
-
         <TabControl Name="AdminTabControl" TabStripPlacement="Left" Margin="0,0,65,10" >
             <TabItem Name="AddProduct" Header="AddProduct" Margin="-2,-2,-39,-8">
                 <TabItem.Content>
@@ -115,7 +112,6 @@
                         <Label Content="Choose warehouse:"  Canvas.Left="-1" Canvas.Top="46"/>
                         <Button x:Name="Add_Vendor" Content="Add" Canvas.Left="302" Canvas.Top="100" Width="79"  Command="{Binding AddVendor}"  />
                     </Canvas>
-
                 </TabItem.Content>
             </TabItem>
             <TabItem Name="Shipping" Header="Shipping" Margin="-2,24,-39,-34" >
@@ -168,9 +164,6 @@
                     </ItemsControl.ItemTemplate>
                 </ListBox>
             </TabItem>
-
-
-
         </TabControl>
         <Button Content="Back"  HorizontalAlignment="Left" Margin="735,37,0,0" VerticalAlignment="Top" Click="Back_Click" Width="50"/>
     </Grid>

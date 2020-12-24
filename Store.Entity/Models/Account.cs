@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Store.Domain.Models
 {
-   public class Account: DomainObject
+    public class Account : DomainObject
     {
         public virtual User User { get; set; }
         public Guid AddressId { get; set; }

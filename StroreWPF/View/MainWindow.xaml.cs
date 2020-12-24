@@ -1,6 +1,5 @@
 ﻿using StoreWPF.ViewModel;
 using System.Windows;
-using System.Windows.Media.Animation;
 
 namespace StoreWPF.View
 {
@@ -15,13 +14,13 @@ namespace StoreWPF.View
 
 
             InitializeComponent();
-            this.DataContext = new MainWindowVM(ApplicationService.Instance.EventAggregator);
+            DataContext = new MainWindowVM(ApplicationService.Instance.EventAggregator);
             shoppingCartWindow = new ShoppingCartWindow(this);
 
         }
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            var adminPanel = new AdminPanel(this);
+            AdminPanel adminPanel = new AdminPanel(this);
             Hide();
             adminPanel.Show();
 
@@ -32,11 +31,6 @@ namespace StoreWPF.View
             Hide();
             shoppingCartWindow.Show();
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

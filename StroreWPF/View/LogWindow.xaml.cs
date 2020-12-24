@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using StoreWPF.ViewModel;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using StoreWPF.ViewModel;
 
 namespace StoreWPF.View
 {
@@ -21,7 +11,7 @@ namespace StoreWPF.View
     {
         public RegisterWindow registerWindow;
         public MainWindow MainWindow;
-        public LogWindow( LogViewModel logViewModel)
+        public LogWindow(LogViewModel logViewModel)
         {
             InitializeComponent();
             DataContext = logViewModel;
@@ -37,9 +27,9 @@ namespace StoreWPF.View
             Dispatcher.BeginInvoke(new ThreadStart(delegate ()
             {
 
-              MainWindow.Show();
-              Close();
-                
+                MainWindow.Show();
+                Close();
+
             }), null);
         }
     }

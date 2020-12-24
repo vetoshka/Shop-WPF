@@ -1,12 +1,12 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Store.Domain;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
 using Store.Domain.Models;
 using Store.Domain.Services;
 using Store.EntityFramework;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace StoreWPF.ViewModel
 {
@@ -15,7 +15,7 @@ namespace StoreWPF.ViewModel
         private readonly IDataService<Order> _orderService = new GenericDataService<Order>(new StoreDbContextFactory());
         private readonly IDataService<Address> _addressService = new GenericDataService<Address>(new StoreDbContextFactory());
         private readonly IDataService<ShippingMethod> _shippingMethodService = new GenericDataService<ShippingMethod>(new StoreDbContextFactory());
-        private readonly IDataService<PaymentMethod> _paymentMethodService= new GenericDataService<PaymentMethod>(new StoreDbContextFactory()) ;
+        private readonly IDataService<PaymentMethod> _paymentMethodService = new GenericDataService<PaymentMethod>(new StoreDbContextFactory());
         public ShippingMethod SelectedShippingMethod { get; set; }
         public PaymentMethod SelectedPaymentMethod { get; set; }
 
@@ -35,7 +35,7 @@ namespace StoreWPF.ViewModel
 
         public OrderVM()
         {
-            
+
             ShippingMethods = new ObservableCollection<ShippingMethod>(_shippingMethodService.GetAll());
             PaymentMethods = new ObservableCollection<PaymentMethod>(_paymentMethodService.GetAll());
             AddOrder = new DelegateCommand(CreateOrder);
@@ -44,7 +44,7 @@ namespace StoreWPF.ViewModel
 
         private void CreateOrder()
         {
-            var address = new Address()
+            Address address = new Address()
             {
                 City = City,
                 Email = Email,
@@ -56,7 +56,7 @@ namespace StoreWPF.ViewModel
                 Id = Guid.NewGuid()
             };
             _addressService.Insert(address);
-            var order = new Order()
+            Order order = new Order()
             {
                 OrderNumber = _orderService.GetAll().Count() + 1,
                 PaymentMethodId = SelectedPaymentMethod.Id,
