@@ -64,7 +64,7 @@ namespace Store.Domain.Services.AuthenticationServices
             Account storedAccount = _accountService.GetByUserName(username);
             if (storedAccount == null)
             {
-                throw new InvalidPasswordException(username, password);
+                throw new  UserNotFoundException(username);
             }
             PasswordVerificationResult passwordsResult =
                 _passwordHasher.VerifyHashedPassword(storedAccount.User.PasswordHash, password);
@@ -79,3 +79,4 @@ namespace Store.Domain.Services.AuthenticationServices
         }
     }
 }
+ 
