@@ -4,5 +4,12 @@
              xmlns:local="clr-namespace:StoreWPF"
              xmlns:viewModel="clr-namespace:StoreWPF.ViewModel">
     <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Common.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>
