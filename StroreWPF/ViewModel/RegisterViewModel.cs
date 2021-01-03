@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace StoreWPF.ViewModel
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : ViewModelBase
     {
         private readonly IAuthenticationService _authenticationService;
 

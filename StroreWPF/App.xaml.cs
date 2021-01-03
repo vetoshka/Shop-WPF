@@ -51,7 +51,7 @@ namespace StoreWPF
             services.AddScoped<RegisterViewModel>();
             //services.AddScoped<AdminPanelVM>();
             //services.AddScoped<ShoppingCartVM>();
-            //services.AddScoped<MainWindowVM>();
+            //services.AddScoped<MainViewModel>();
 
             services.AddScoped<LogViewModel>();
 

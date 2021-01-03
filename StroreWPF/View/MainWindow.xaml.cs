@@ -14,7 +14,7 @@ namespace StoreWPF.View
 
 
             InitializeComponent();
-            DataContext = new MainWindowVM(ApplicationService.Instance.EventAggregator);
+            DataContext = new MainViewModel(ApplicationService.Instance.EventAggregator);
             shoppingCartWindow = new ShoppingCartWindow(this);
 
         }

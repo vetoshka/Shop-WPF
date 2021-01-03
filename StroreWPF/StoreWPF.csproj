@@ -35,8 +35,4 @@
   <ItemGroup>
     <Resource Include="pallet.jpg" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="State\" />
-  </ItemGroup>
 </Project>

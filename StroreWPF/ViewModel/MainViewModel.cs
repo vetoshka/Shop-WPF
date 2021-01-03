@@ -6,10 +6,11 @@ using Store.Domain.Services;
 using Store.EntityFramework;
 using System;
 using System.Collections.ObjectModel;
+using StoreWPF.State.Navigator;
 
 namespace StoreWPF.ViewModel
 {
-    public class MainWindowVM : BindableBase
+    public class MainViewModel : ViewModelBase
     {
 
         private readonly IDataService<Product> _productService = new GenericDataService<Product>(new StoreDbContextFactory());
@@ -17,8 +18,8 @@ namespace StoreWPF.ViewModel
         private readonly IDataService<ShoppingCartItem> _shoppingCartItemService = new GenericDataService<ShoppingCartItem>(new StoreDbContextFactory());
 
         private ShoppingCart shoppingCart;
-
-        public MainWindowVM(IEventAggregator eventAggregator)
+        public  INavigator Navigator { get; set; } = new Navigator();
+        public MainViewModel(IEventAggregator eventAggregator)
         {
 
             _eventAggregator = eventAggregator;
@@ -31,6 +32,10 @@ namespace StoreWPF.ViewModel
 
 
             AddProductToShoppingCart = new DelegateCommand<Product>(CreateShoppingCartItem);
+        }
+
+        public MainViewModel()
+        {
         }
 
         private ShoppingCart CreateShoppingCart()

@@ -10,18 +10,18 @@
       <Field Name="_authenticationService" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="StoreWPF.ViewModel.MainWindowVM">
+  <Class Name="StoreWPF.ViewModel.MainViewModel">
     <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQDAAAAQAAAgIAAAAAAAAAAAAIgAAAAAAAAAgQ=</HashCode>
-      <FileName>ViewModel\MainWindowVM.cs</FileName>
+      <HashCode>AAAAAAQDBAAAQAAAgIAAAAAAAAAAAAIgAAAAAAAAAgQ=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_eventAggregator" />
       <Field Name="_productService" />
-      <Field Name="_shoppingCartItemService" />
       <Field Name="_shoppingCartService" />
+      <Field Name="_shoppingCartItemService" />
       <Field Name="shoppingCart" />
+      <Field Name="_eventAggregator" />
     </ShowAsAssociation>
   </Class>
   <Class Name="StoreWPF.ViewModel.OrderVM">
@@ -31,10 +31,10 @@
       <FileName>ViewModel\OrderVM.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_addressService" />
       <Field Name="_orderService" />
-      <Field Name="_paymentMethodService" />
+      <Field Name="_addressService" />
       <Field Name="_shippingMethodService" />
+      <Field Name="_paymentMethodService" />
     </ShowAsAssociation>
   </Class>
   <Class Name="StoreWPF.ViewModel.RegisterViewModel">
@@ -54,8 +54,8 @@
       <FileName>ViewModel\ShoppingCartVM.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_eventAggregator" />
       <Field Name="_shoppingCartItemService" />
+      <Field Name="_eventAggregator" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Store.Domain.Models.ShoppingCart">

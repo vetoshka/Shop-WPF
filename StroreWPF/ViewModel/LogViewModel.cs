@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace StoreWPF.ViewModel
 {
-    public class LogViewModel
+    public class LogViewModel : ViewModelBase
     {
         private readonly IAuthenticationService _authenticationService;
 
