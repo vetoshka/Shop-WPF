@@ -5,28 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreWPF"
         mc:Ignorable="d"
-        Title="ShoppingCartWindow" Height="450" Width="800">
+        Title="ShoppingCartWindow" Height="450" Width="800" Background="{StaticResource BackgroundBrush1}">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF2B3068"/>
-            <Setter Property="Background" Value="#FFA3ABFF"/>
-            <Setter Property="BorderBrush" Value="#FFA3ABFF"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush1}"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF2B3068"/>
-            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush2}"></Setter>
         </Style>
     </Window.Resources>
     <Grid>
         <ScrollViewer Name="ProductScrollCart" Margin="63,10,92,92" CanContentScroll="True">
             <ListBox Name ="CartItem" Margin="0,1,82,46" Height="507" Width="610" RenderTransformOrigin="0.534,0.52"
-                     ItemsSource="{Binding Items}">
+                     ItemsSource="{Binding Items}" Background="{StaticResource BackgroundBrush1}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5">
@@ -39,6 +36,6 @@
             </ListBox>
         </ScrollViewer>
         <Button Content="Back" HorizontalAlignment="Left" Margin="63,380,0,0" VerticalAlignment="Top" Height="24" Width="59" Click="Button_Click"/>
-        <Button Content="Confirm order" Command="{Binding ConfirmOrder}" Margin="533,380,0,0" Height="24" Width="86" Click="Button_Click_1"/>
+        <Button Content="Confirm order" Command="{Binding ConfirmOrder}" Margin="583,373,131,37" Height="24" Width="86" Click="Button_Click_1"/>
     </Grid>
 </Window>

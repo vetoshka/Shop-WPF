@@ -5,26 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreWPF.View"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="402" Width="488" Background="#FFBCBFFF">
+        Title="RegisterWindow" Height="402" Width="488" Background="{StaticResource BackgroundBrush1}">
     <Window.Resources>
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="Background" Value="#FFD9DBFF"></Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush2}"></Setter>
             <Setter Property="Width" Value="197"></Setter>
             <Setter Property="Height" Value="30"></Setter>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF32008B"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
             <Setter Property="FontSize" Value="18"></Setter>
-            <Setter Property="Background" Value="#FFBCBFFF"></Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush1}"></Setter>
         </Style>
     </Window.Resources>
     <Canvas>

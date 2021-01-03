@@ -8,113 +8,33 @@
         xmlns:model="clr-namespace:Store.Domain;assembly=Store.Domain"
         xmlns:domain="clr-namespace:Store.Domain;assembly=Store.Domain"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="800">
+        Title="MainWindow" Height="700" Width="800" Background="{StaticResource BackgroundBrush1}">
     <Window.Resources>
-        <Storyboard x:Key="hideMe">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.8" To="0.0"/>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="showMe">
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.01" Value="{x:Static Visibility.Visible}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.8" To="1.0"/>
-        </Storyboard>
         <Style TargetType="Button">
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF2B3068"/>
-            <Setter Property="Background" Value="#FFA3ABFF"/>
-            <Setter Property="BorderBrush" Value="#FFA3ABFF"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush1}"></Setter>
+            <Setter Property="BorderBrush" Value="{StaticResource BackgroundBrush1}"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontFamily" Value="Book Antiqua"/>
-            <Setter Property="Foreground" Value="#FF2B3068"/>
-            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush2}"></Setter>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Book Antiqua"/>
+            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
         </Style>
     </Window.Resources>
-        <Grid>
-            <Button Name="ShoppingCartButton" Content="Shopping Cart" Margin="681,52,0,0"  Height="30" Width="92" Click="ShoppingCartButton_Click" />
+    <Canvas>
+        <Button Name="ShoppingCartButton" Content="Shopping Cart" Margin="662,44,12,610"  Height="30" Click="ShoppingCartButton_Click" />
         <Rectangle HorizontalAlignment="Center" Height="28" Stroke="#FF2B3068" VerticalAlignment="Top" Width="800" Fill="#FFA3ABFF"/>
-        <Button Name="Account" Content="Admin" Margin="727,0,0,0" Height="20" Width="50" Click="AdminButton_Click"/>
-        <ScrollViewer Name="ProductScrollMain" Height="518" Margin="82,120,73,46" CanContentScroll="True">
-           
-                <ItemsControl  ItemsSource="{Binding Products}" >
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-
-    <DataTemplate>
-        <StackPanel Margin="5">
-                            <StackPanel.Triggers>
-                                <EventTrigger RoutedEvent="StackPanel.MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation 
-                                                    Storyboard.TargetName="AddToCart"
-                                                    Storyboard.TargetProperty="Opacity"
-                                                     To="1.0" Duration="0:0:1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="StackPanel.MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                      
-                                            <DoubleAnimation 
-                                                        Storyboard.TargetName="AddToCart"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        To="0.0" Duration="0:0:1"/>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Image"
-                                                Storyboard.TargetProperty="Width"
-                                                Duration="0:0:2"  To="100"/>
-                                            <DoubleAnimation
-                                                Storyboard.TargetName="Image"
-                                                Storyboard.TargetProperty="Height"
-                                                Duration="0:0:1" To="75"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </StackPanel.Triggers>
-                                <Image Name="Image" Width="100" Height="75" Source="{Binding  Path=ImageSource}" >
-                                    <Image.Triggers>
-                                        <EventTrigger RoutedEvent="Image.MouseEnter">
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation
-                                                    Storyboard.TargetName="Image"
-                                                        Storyboard.TargetProperty="Width"
-                                                        Duration="0:0:1" To="130"/>
-                                                    <DoubleAnimation
-                                                        Storyboard.TargetName="Image"
-                                                        Storyboard.TargetProperty="Height"
-                                                        Duration="0:0:1"  To="105"/>
-                                            </Storyboard>
-                                            </BeginStoryboard>
-                                        </EventTrigger>
-                                    </Image.Triggers>
-                                </Image>
-            <TextBlock FontSize="16" Text="{Binding Path=Name}" HorizontalAlignment="Center" />
-        <TextBlock FontSize="16"  Name="Cost" Text="{Binding Path=Cost}" HorizontalAlignment="Center" />
-                            <Button Opacity="100" HorizontalAlignment="Center" Name="AddToCart"  Content="Add to Cart"  Command="{Binding DataContext.AddProductToShoppingCart,
-         RelativeSource={RelativeSource AncestorType=ItemsControl} }" CommandParameter="{Binding}">
-        </Button>
-    </StackPanel>
-    </DataTemplate>
-</ItemsControl.ItemTemplate>
-                </ItemsControl>
-        </ScrollViewer>
-        <TextBox Name="MyStore" Margin="305,44,0,0" IsReadOnly="True" Text="My Store" Width="160" FontSize="36">
-            <TextBox.Triggers>
+        <Button Name="Account" Content="Admin" Margin="572,44,166,606" Click="AdminButton_Click" RenderTransformOrigin="-4,-11.999"/>
+        <Label Name="MyStore"  Content="My Store" Width="Auto" FontSize="36" Canvas.Left="323" Canvas.Top="32">
+            <Label.Triggers>
                 <EventTrigger RoutedEvent="TextBox.Loaded">
 
                     <BeginStoryboard>
@@ -127,7 +47,76 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
-            </TextBox.Triggers>
-        </TextBox>
-        </Grid>
+            </Label.Triggers>
+        </Label>
+        <ScrollViewer Name="ProductScrollMain" Height="518" Margin="82,120,73,46" CanContentScroll="True" Canvas.Left="30" Canvas.Top="-28" Width="657">
+
+        <ItemsControl  ItemsSource="{Binding Products}" Canvas.Left="80" Canvas.Top="57" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <StackPanel.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                                    Storyboard.TargetName="AddToCart"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                     To="1.0" Duration="0:0:1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+
+                                        <DoubleAnimation 
+                                                        Storyboard.TargetName="AddToCart"
+                                                        Storyboard.TargetProperty="Opacity"
+                                                        To="0.0" Duration="0:0:1"/>
+                                        <DoubleAnimation
+                                                Storyboard.TargetName="Image"
+                                                Storyboard.TargetProperty="Width"
+                                                Duration="0:0:2"  To="100"/>
+                                        <DoubleAnimation
+                                                Storyboard.TargetName="Image"
+                                                Storyboard.TargetProperty="Height"
+                                                Duration="0:0:1" To="75"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </StackPanel.Triggers>
+                        <Image x:Name="Image" Width="100" Height="75" Source="{Binding ImageSource}" >
+                            <Image.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                    Storyboard.TargetName="Image"
+                                                        Storyboard.TargetProperty="Width"
+                                                        Duration="0:0:1" To="130"/>
+                                            <DoubleAnimation
+                                                        Storyboard.TargetName="Image"
+                                                        Storyboard.TargetProperty="Height"
+                                                        Duration="0:0:1"  To="105"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Image.Triggers>
+                        </Image>
+                        <TextBlock FontSize="16" Text="{Binding Name}" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16"  x:Name="Cost" Text="{Binding Cost}" HorizontalAlignment="Center" />
+                        <Button Opacity="100" HorizontalAlignment="Center" x:Name="AddToCart"  Content="Add to Cart"  Command="{Binding DataContext.AddProductToShoppingCart, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+            </ScrollViewer>
+    </Canvas>
 </Window>
